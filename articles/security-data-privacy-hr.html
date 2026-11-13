@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building Privacy Into Your HR Tools From Day One — AI for HR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #2D4A3E;
+  --deep-forest: #1B3129;
+  --sage: #7A9E8E;
+  --mist: #B8CFC4;
+  --fog: #E8EDE9;
+  --cream: #F7F5F0;
+  --warm-white: #FDFCF9;
+  --bark: #5C4A3A;
+  --gold: #C4A96A;
+  --text: #2A2A28;
+  --text-light: #6B6B65;
+  --text-muted: #9B9B93;
+  --display: 'Fraunces', serif;
+  --body: 'DM Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--body);
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(253,252,249,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--fog);
+}
+
+.nav-logo {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--forest);
+  text-decoration: none;
+}
+
+.nav-back {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-back:hover { color: var(--forest); }
+
+/* ===== ARTICLE HEADER ===== */
+.article-header {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+}
+
+.article-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--warm-white);
+  background: var(--forest);
+  padding: 0.3rem 0.75rem;
+  border-radius: 3px;
+  margin-bottom: 1.25rem;
+}
+
+.article-header h1 {
+  font-family: var(--display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 300;
+  color: var(--forest);
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--fog);
+}
+
+.article-meta .author { color: var(--text-light); font-weight: 500; }
+
+/* ===== ARTICLE BODY ===== */
+.article-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
+.article-body p {
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.article-body h2 {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--forest);
+  margin: 2.5rem 0 1rem;
+  line-height: 1.3;
+}
+
+.article-body h3 {
+  font-family: var(--display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--bark);
+  margin: 2rem 0 0.75rem;
+}
+
+.article-body ul, .article-body ol {
+  margin: 0 0 1.5rem 1.5rem;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.article-body li { margin-bottom: 0.5rem; }
+
+.article-body strong { color: var(--forest); font-weight: 600; }
+
+.article-body a {
+  color: var(--forest);
+  text-decoration: underline;
+  text-decoration-color: var(--mist);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.3s;
+}
+
+.article-body a:hover { text-decoration-color: var(--forest); }
+
+/* Callout box */
+.callout {
+  background: var(--fog);
+  border-left: 3px solid var(--sage);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0 6px 6px 0;
+  margin: 2rem 0;
+}
+
+.callout p {
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 0;
+  line-height: 1.7;
+}
+
+.callout p + p { margin-top: 0.75rem; }
+
+.callout-title {
+  font-weight: 600;
+  color: var(--forest);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+/* Checklist */
+.checklist {
+  background: var(--warm-white);
+  border: 1px solid var(--fog);
+  border-radius: 6px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.checklist-title {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--forest);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--fog);
+}
+
+.checklist ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.checklist li {
+  position: relative;
+  padding: 0.5rem 0 0.5rem 2rem;
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.6;
+  border-bottom: 1px solid var(--fog);
+}
+
+.checklist li:last-child { border-bottom: none; }
+
+.checklist li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7rem;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--sage);
+  border-radius: 3px;
+}
+
+.checklist .section-label {
+  font-weight: 600;
+  color: var(--forest);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 1rem 0 0.25rem;
+  border-bottom: none;
+}
+
+.checklist .section-label::before { display: none; }
+
+/* Data classification table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.92rem;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  background: var(--forest);
+  color: var(--warm-white);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.data-table th:first-child { border-radius: 4px 0 0 0; }
+.data-table th:last-child { border-radius: 0 4px 0 0; }
+
+.data-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--fog);
+  vertical-align: top;
+}
+
+.data-table tr:nth-child(even) td { background: var(--warm-white); }
+
+.level-restricted {
+  display: inline-block;
+  background: #e8d5d5;
+  color: #7a3a3a;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.level-confidential {
+  display: inline-block;
+  background: #e8dfd0;
+  color: #6b5530;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.level-internal {
+  display: inline-block;
+  background: #d5e3dc;
+  color: #2d4a3e;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Code blocks */
+.code-block {
+  background: #1a2332;
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.code-block code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.85rem;
+  color: #e2e8f0;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Back link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--sage);
+  text-decoration: none;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--fog);
+  transition: color 0.3s;
+  width: 100%;
+}
+
+.back-link:hover { color: var(--forest); }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--cream);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--fog);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--forest); }
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Print styles for checklist */
+@media print {
+  nav, footer, .back-link { display: none; }
+  .checklist { border: 2px solid #333; break-inside: avoid; }
+  body { background: white; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .article-header { padding: 2.5rem 1.25rem 1.5rem; }
+  .article-body { padding: 2rem 1.25rem 3rem; }
+  .article-meta { flex-wrap: wrap; gap: 0.5rem; }
+  .data-table { font-size: 0.82rem; }
+  .data-table th, .data-table td { padding: 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">AI for HR</a>
+  <a href="../index.html#articles" class="nav-back">&larr; All Articles</a>
+</nav>
+
+<article>
+  <div class="article-header">
+    <span class="article-tag">Security</span>
+    <h1>Building Privacy Into Your HR Tools From Day One</h1>
+    <div class="article-meta">
+      <span class="author">Denise Mathews</span>
+      <span>March 25, 2026</span>
+      <span>10 min read</span>
+    </div>
+  </div>
+
+  <div class="article-body">
+    <p>Here is something that keeps me up at night: the number of HR teams I talk to who are already using AI tools daily but have never had a conversation about data privacy. They are pasting employee complaints into ChatGPT. They are running performance reviews through AI summarizers they found on Product Hunt. They are excited, which is great, but they are moving fast without guardrails.</p>
+
+    <p>I get it. The tools are useful. The pressure to adopt is real. But if you are in HR, you are sitting on some of the most sensitive data in your entire organization. Medical records. Salary data. Discrimination complaints. Immigration documents. And AI tools, by default, are designed to send that data to external servers for processing.</p>
+
+    <p>This does not mean you should avoid AI. It means you need to build privacy into your workflow from the beginning, not bolt it on after something goes wrong. Let me show you how.</p>
+
+    <h2>Data Classification: Know What You Are Working With</h2>
+
+    <p>Before you can protect data, you need to know what kind of data you have. Most organizations use three or four tiers. Here is a classification framework built specifically for HR data:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Level</th>
+          <th>HR Data Examples</th>
+          <th>AI Tool Rule</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="level-restricted">Restricted</span></td>
+          <td>SSNs, medical records, I-9 documents, investigation files, legal hold materials, EEO complaints</td>
+          <td>Never send to any AI tool, period</td>
+        </tr>
+        <tr>
+          <td><span class="level-confidential">Confidential</span></td>
+          <td>Individual compensation, performance reviews with names, disciplinary records, accommodation requests, background checks</td>
+          <td>Enterprise AI tier only, anonymized when possible</td>
+        </tr>
+        <tr>
+          <td><span class="level-internal">Internal</span></td>
+          <td>Org charts, general policies, job descriptions, aggregate survey data, training materials, benefits summaries</td>
+          <td>OK for AI tools with standard precautions</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Print this out. Stick it next to your monitor. Before you paste anything into an AI tool, glance at it and ask: what level is this data?</p>
+
+    <div class="callout">
+      <div class="callout-title">The Anonymization Test</div>
+      <p>Before sending any data to an AI tool, ask yourself: "If this data were leaked publicly, could any individual be identified or harmed?" If the answer is yes, you need to either anonymize it first or not send it at all. Replace names with "Employee A" and "Employee B." Remove dates, locations, and team names that could make someone identifiable.</p>
+    </div>
+
+    <h2>When and How to Anonymize</h2>
+
+    <p>Anonymization sounds complicated, but for day-to-day HR work, it is usually straightforward. The goal is to remove or replace any information that could identify a specific person. Here is a practical approach:</p>
+
+    <p><strong>Replace names</strong> with generic labels. "Sarah in Engineering" becomes "Employee A in Department X." This includes names mentioned within the text, not just headers.</p>
+
+    <p><strong>Remove specific dates</strong> when they are not essential to the question. "The incident happened on March 14, 2026" can become "The incident happened recently" if the exact date is not important for the analysis you need.</p>
+
+    <p><strong>Generalize team and location details.</strong> "The San Francisco marketing team" becomes "a team at one of our offices." The more specific the detail, the easier it is to figure out who you are talking about, especially in small companies.</p>
+
+    <p><strong>Strip compensation numbers</strong> when asking for advice about structure or equity. Instead of "This person makes $145,000 and their peer makes $162,000," try "Employee A makes approximately 10% less than their peer in the same role."</p>
+
+    <p>The core principle: give the AI the information it needs to help you, and nothing more.</p>
+
+    <h2>Access Controls That Actually Work</h2>
+
+    <p>If your team is using AI tools, you need to think about who has access to what. This is not just about the AI tools themselves; it is about the inputs and outputs.</p>
+
+    <p><strong>Input controls:</strong> Who on your team is allowed to use AI tools for HR work? Do they know the data classification rules? Have they been trained on anonymization? If you are an HR team of one, this is a conversation with yourself. If you manage a team, it needs to be documented.</p>
+
+    <p><strong>Output controls:</strong> When an AI generates a draft, a summary, or an analysis, where does that output go? Is it saved in a shared drive where people outside HR can access it? AI-generated outputs can sometimes include inferred information that is more sensitive than what you originally put in. A summary of "performance concerns across the engineering team" might make it very obvious who you are talking about.</p>
+
+    <p><strong>Tool-level controls:</strong> If you are using an enterprise tier (and for HR work, you should be), make sure your admin settings are configured correctly. Turn off training on your data. Enable audit logs. Restrict which team members can access which workspaces or projects.</p>
+
+    <h2>Evaluating AI Vendors for HR Use</h2>
+
+    <p>At some point, a vendor is going to pitch you an AI-powered HR product. Maybe it is a resume screener, an engagement survey analyzer, or a chatbot for employee questions. Before you sign anything, you need to ask the right questions.</p>
+
+    <p>I am not talking about the usual vendor evaluation. I am talking about questions specific to AI and data privacy that many HR teams do not think to ask.</p>
+
+    <ul>
+      <li><strong>Where is our data processed and stored?</strong> Some AI tools send data to servers in other countries, which matters for GDPR compliance and for employees whose data you are processing.</li>
+      <li><strong>Is our data used to train the model?</strong> The answer you want is no. If the vendor says "not by default" or "you can opt out," get the opt-out in writing before you sign.</li>
+      <li><strong>What happens to our data when we cancel?</strong> You want full deletion, not just deactivation. Get the data retention and deletion policy in writing.</li>
+      <li><strong>Can we see audit logs?</strong> You should be able to see who accessed the tool, what data was processed, and when. This is not optional for HR data.</li>
+      <li><strong>Has the tool been tested for bias?</strong> Especially important for any tool that touches hiring, promotions, or performance. Ask for their bias testing methodology and results.</li>
+      <li><strong>What is the incident response plan?</strong> If there is a data breach, how quickly will they notify you? What support do they provide?</li>
+    </ul>
+
+    <div class="callout">
+      <div class="callout-title">Red Flag</div>
+      <p>If a vendor cannot clearly answer these questions, or if they get defensive when you ask, that tells you everything you need to know. A trustworthy AI vendor expects these questions and has clear, documented answers ready.</p>
+    </div>
+
+    <h2>Building a Data Flow Map</h2>
+
+    <p>A data flow map sounds fancy, but it is really just a document that answers the question: where does our HR data go when we use this AI tool?</p>
+
+    <p>For every AI tool your team uses or plans to use, document the following:</p>
+
+    <ol>
+      <li><strong>Data in:</strong> What specific data enters the tool? Who enters it? How (copy-paste, file upload, API)?</li>
+      <li><strong>Processing:</strong> Where is the data processed? On what servers? In what country? Is it encrypted in transit?</li>
+      <li><strong>Data storage:</strong> Is any data stored by the vendor? For how long? Can you delete it?</li>
+      <li><strong>Data out:</strong> Where does the output go? Is it saved automatically anywhere? Who can see it?</li>
+      <li><strong>Data retention:</strong> How long does the vendor keep conversation logs, uploads, or outputs?</li>
+    </ol>
+
+    <p>You do not need fancy software for this. A simple spreadsheet with one row per tool works perfectly. Update it quarterly, or whenever you adopt a new tool.</p>
+
+    <p>This document will also be enormously useful when your legal team, your CISO, or a compliance auditor asks how your team is using AI. Instead of scrambling, you hand them the map.</p>
+
+    <h2>Your Privacy Checklist</h2>
+
+    <p>Here is a printable checklist you can use every time you adopt a new AI tool or workflow for HR. Print it out, or save it somewhere your team can reference it easily.</p>
+
+    <div class="checklist">
+      <div class="checklist-title">AI Tool Privacy Checklist for HR Teams</div>
+      <ul>
+        <li class="section-label">Before You Start</li>
+        <li>Classified the data you will use with this tool (Restricted / Confidential / Internal)</li>
+        <li>Confirmed no Restricted data will ever enter this tool</li>
+        <li>Established anonymization procedures for any Confidential data</li>
+        <li>Verified the tool is on an enterprise tier with data processing agreement</li>
+
+        <li class="section-label">Vendor Due Diligence</li>
+        <li>Confirmed vendor does not train on your data (in writing)</li>
+        <li>Reviewed data processing locations and jurisdictions</li>
+        <li>Verified data retention and deletion policies</li>
+        <li>Confirmed audit log availability</li>
+        <li>Reviewed bias testing methodology (if tool touches hiring/performance)</li>
+        <li>Documented incident response and breach notification process</li>
+
+        <li class="section-label">Access &amp; Controls</li>
+        <li>Defined who on your team is authorized to use the tool</li>
+        <li>Configured tool-level permissions and workspace restrictions</li>
+        <li>Turned off any "improve our model" or data sharing settings</li>
+        <li>Established rules for where AI outputs can be saved and shared</li>
+
+        <li class="section-label">Documentation</li>
+        <li>Created a data flow map for this tool</li>
+        <li>Added tool to your team's AI usage inventory</li>
+        <li>Communicated usage guidelines to the team</li>
+        <li>Scheduled a quarterly review of this tool's data practices</li>
+
+        <li class="section-label">Ongoing</li>
+        <li>Reviewing audit logs monthly for unexpected usage patterns</li>
+        <li>Updating data flow map when tool features change</li>
+        <li>Re-evaluating vendor privacy practices at contract renewal</li>
+      </ul>
+    </div>
+
+    <h2>The Culture Piece</h2>
+
+    <p>Checklists and policies are important, but they only work if your team understands the <em>why</em> behind them. The most effective privacy culture I have seen in HR teams comes from framing it this way: "We protect employee data because our employees trust us with it. That trust is the foundation of everything we do."</p>
+
+    <p>When a recruiter on your team understands that pasting a candidate's resume into an unsanctioned AI tool is a violation of that trust, not just a policy violation, they will make better decisions even in situations the policy does not cover.</p>
+
+    <p>Have the conversation. Make it a regular part of your team meetings. Celebrate when someone raises a concern about data handling. That is how you build privacy into your culture, not just your tools.</p>
+
+    <h2>Start Today</h2>
+
+    <p>You do not need to implement all of this at once. Here is what I would do this week:</p>
+
+    <ol>
+      <li>Print the data classification table and put it where your team can see it.</li>
+      <li>Make a list of every AI tool your team is currently using, even the free ones, even the ones people found on their own.</li>
+      <li>For each tool, ask: are we on a consumer tier or an enterprise tier? If consumer, stop using it for any HR data until you upgrade.</li>
+    </ol>
+
+    <p>That is three steps. It will take you an hour, maybe two. And it will put you ahead of 90% of HR teams when it comes to responsible AI adoption.</p>
+
+    <p>Privacy is not the enemy of innovation. It is what makes innovation sustainable. Build it in from day one, and you will never have to scramble to bolt it on later.</p>
+
+    <a href="../index.html#articles" class="back-link">&larr; Back to all articles</a>
+  </div>
+</article>
+
+<footer>
+  <ul class="footer-links">
+    <li><a href="../index.html#articles">Articles</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#subscribe">Subscribe</a></li>
+    <li><a href="https://www.linkedin.com/in/denmath">LinkedIn</a></li>
+  </ul>
+  <p class="footer-copy">&copy; 2026 AI for HR &middot; Built with &hearts; in San Francisco</p>
+</footer>
+
+</body>
+</html>

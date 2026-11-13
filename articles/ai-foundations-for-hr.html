@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Foundations for HR: What You Actually Need to Know — AI for HR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #2D4A3E;
+  --deep-forest: #1B3129;
+  --sage: #7A9E8E;
+  --mist: #B8CFC4;
+  --fog: #E8EDE9;
+  --cream: #F7F5F0;
+  --warm-white: #FDFCF9;
+  --bark: #5C4A3A;
+  --gold: #C4A96A;
+  --text: #2A2A28;
+  --text-light: #6B6B65;
+  --text-muted: #9B9B93;
+  --display: 'Fraunces', serif;
+  --body: 'DM Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--body);
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(253,252,249,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--fog);
+}
+
+.nav-logo {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--forest);
+  text-decoration: none;
+}
+
+.nav-back {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-back:hover { color: var(--forest); }
+
+/* ===== ARTICLE HEADER ===== */
+.article-header {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+}
+
+.article-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--warm-white);
+  background: var(--sage);
+  padding: 0.3rem 0.75rem;
+  border-radius: 3px;
+  margin-bottom: 1.25rem;
+}
+
+.article-header h1 {
+  font-family: var(--display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 300;
+  color: var(--forest);
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--fog);
+}
+
+.article-meta .author { color: var(--text-light); font-weight: 500; }
+
+/* ===== ARTICLE BODY ===== */
+.article-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
+.article-body p {
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.article-body h2 {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--forest);
+  margin: 2.5rem 0 1rem;
+  line-height: 1.3;
+}
+
+.article-body h3 {
+  font-family: var(--display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--bark);
+  margin: 2rem 0 0.75rem;
+}
+
+.article-body ul, .article-body ol {
+  margin: 0 0 1.5rem 1.5rem;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.article-body li { margin-bottom: 0.5rem; }
+
+.article-body strong { color: var(--forest); font-weight: 600; }
+
+.article-body a {
+  color: var(--forest);
+  text-decoration: underline;
+  text-decoration-color: var(--mist);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.3s;
+}
+
+.article-body a:hover { text-decoration-color: var(--forest); }
+
+/* Callout box */
+.callout {
+  background: var(--fog);
+  border-left: 3px solid var(--sage);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0 6px 6px 0;
+  margin: 2rem 0;
+}
+
+.callout p {
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 0;
+  line-height: 1.7;
+}
+
+.callout p + p { margin-top: 0.75rem; }
+
+.callout-title {
+  font-weight: 600;
+  color: var(--forest);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+/* Code blocks */
+.code-block {
+  background: #1a2332;
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.code-block code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.85rem;
+  color: #e2e8f0;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.code-block .comment { color: #64748b; }
+.code-block .string { color: #86efac; }
+.code-block .keyword { color: #93c5fd; }
+
+/* Prompt example boxes */
+.prompt-box {
+  background: var(--warm-white);
+  border: 1px solid var(--fog);
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.prompt-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--sage);
+  margin-bottom: 0.5rem;
+}
+
+.prompt-box p {
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+/* Back link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--sage);
+  text-decoration: none;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--fog);
+  transition: color 0.3s;
+  width: 100%;
+}
+
+.back-link:hover { color: var(--forest); }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--cream);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--fog);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--forest); }
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .article-header { padding: 2.5rem 1.25rem 1.5rem; }
+  .article-body { padding: 2rem 1.25rem 3rem; }
+  .article-meta { flex-wrap: wrap; gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">AI for HR</a>
+  <a href="../index.html#articles" class="nav-back">&larr; All Articles</a>
+</nav>
+
+<article>
+  <div class="article-header">
+    <span class="article-tag">Getting Started</span>
+    <h1>AI Foundations for HR: What You Actually Need to Know</h1>
+    <div class="article-meta">
+      <span class="author">Denise Mathews</span>
+      <span>March 28, 2026</span>
+      <span>8 min read</span>
+    </div>
+  </div>
+
+  <div class="article-body">
+    <p>If you work in HR or People Operations, you have probably been told, in some form or another, that you need to "learn AI." Maybe your CEO dropped it into a company all-hands. Maybe you saw a LinkedIn post that made you feel like you are already behind. Maybe a vendor pitched you a product that "uses AI" and you nodded along while quietly wondering what that actually means.</p>
+
+    <p>Here is the good news: you do not need a computer science degree. You do not need to learn Python (unless you want to, and honestly it is fun). You just need a clear understanding of what these tools actually do, what they are good at, and where they will get you into trouble if you are not careful.</p>
+
+    <p>Let's start from the beginning.</p>
+
+    <h2>What Is a Large Language Model, Really?</h2>
+
+    <p>When people say "AI" in 2026, they usually mean a <strong>Large Language Model</strong>, or LLM. The two you have probably heard of are ChatGPT (made by OpenAI) and Claude (made by Anthropic). There are others, but these are the ones most HR teams encounter first.</p>
+
+    <p>Here is the simplest way to think about it: an LLM is a system that has read an enormous amount of text, everything from Wikipedia to published books to websites, and learned the patterns of how language works. When you give it a prompt (a question or instruction), it generates a response by predicting what text should come next, based on those patterns.</p>
+
+    <p>It is not thinking. It is not conscious. It does not "know" things the way you know your best friend's birthday. But it is extraordinarily good at producing useful, coherent, context-aware text. And that makes it surprisingly powerful for HR work, where so much of what we do is writing, summarizing, analyzing, and communicating.</p>
+
+    <div class="callout">
+      <div class="callout-title">Key Concept</div>
+      <p>An LLM does not store a database of facts. It learned patterns from text. This means it can sometimes generate confident-sounding information that is completely wrong. In AI circles, this is called a "hallucination." Always verify anything factual, especially legal or compliance information.</p>
+    </div>
+
+    <h2>Claude vs. ChatGPT: What Is the Difference?</h2>
+
+    <p>Both are LLMs, but they have different personalities and strengths. Think of it like comparing two excellent employees who have different working styles.</p>
+
+    <p><strong>ChatGPT</strong> (by OpenAI) was the first to reach mainstream adoption. It is broadly capable, has a huge plugin ecosystem, and can browse the web, generate images, and analyze files. It is a great general-purpose tool.</p>
+
+    <p><strong>Claude</strong> (by Anthropic) tends to be more careful and nuanced in its responses. It is particularly strong at long-form writing, following detailed instructions, and handling sensitive topics thoughtfully. Anthropic has also placed a strong emphasis on safety and responsible AI.</p>
+
+    <p>For HR work specifically, both are excellent. My honest recommendation: try both and see which one feels more natural for your workflow. Many HR professionals I work with end up using Claude for writing-heavy tasks (policy drafts, communication templates, analysis) and ChatGPT for quick research and file analysis. There is no wrong answer here.</p>
+
+    <h2>Safe Prompting Basics</h2>
+
+    <p>A "prompt" is simply the instruction you give to the AI. The quality of what you get back is directly related to the quality of what you put in. Here are the principles that matter most for HR professionals:</p>
+
+    <h3>1. Be Specific About Context</h3>
+
+    <p>Instead of asking "Write an email about PTO," give the model the context it needs. Who is the audience? What is the policy? What tone are you going for? The more specific you are, the less editing you will need to do on the output.</p>
+
+    <h3>2. Tell It What Role to Play</h3>
+
+    <p>LLMs respond well to role assignment. Starting your prompt with something like "You are an experienced HR Business Partner at a 200-person tech startup" helps the model calibrate its tone, vocabulary, and assumptions.</p>
+
+    <h3>3. Show It What Good Looks Like</h3>
+
+    <p>If you have an example of the kind of output you want, include it. "Here is an example of a performance review comment in our company's style. Write three more like it for the following scenarios..." works remarkably well.</p>
+
+    <h3>4. Ask for Options, Not Answers</h3>
+
+    <p>Instead of asking the AI for the answer, ask it for three options. This keeps you in the driver's seat and avoids the trap of blindly accepting whatever the model generates first.</p>
+
+    <h2>What NOT to Put Into AI Tools</h2>
+
+    <p>This is the section to pay the most attention to. The biggest risk in using AI for HR is not that the tool will give you a bad email draft. It is that you will accidentally feed it data that should never leave your organization.</p>
+
+    <p><strong>Never paste these into a consumer AI tool:</strong></p>
+
+    <ul>
+      <li>Social Security numbers, government IDs, or financial account details</li>
+      <li>Employee medical information, disability accommodations, or health records</li>
+      <li>Full performance reviews with employee names attached</li>
+      <li>Compensation data tied to specific individuals</li>
+      <li>Investigation notes, complaints, or legal hold documents</li>
+      <li>Anything shared with you in confidence during a 1-on-1</li>
+    </ul>
+
+    <div class="callout">
+      <div class="callout-title">The General Rule</div>
+      <p>If you would not email it to a stranger, do not paste it into a consumer AI tool. Even if the provider says they do not train on your data, you are still sending that information to a third-party server. Enterprise tiers (like Claude for Business or ChatGPT Enterprise) have stronger data handling agreements, but the safest approach is always to anonymize first.</p>
+    </div>
+
+    <p>The good news is that most HR tasks do not require sensitive data at all. You can get enormous value from AI without ever putting an employee name into it. Need help with a tricky performance conversation? Describe the situation generically: "An employee on my team has missed three deadlines this quarter. They were previously a strong performer. Help me draft talking points for a supportive but direct conversation." No PII needed.</p>
+
+    <h2>Four Prompts You Can Try Right Now</h2>
+
+    <p>The best way to learn is to start doing. Here are four prompts you can copy and paste today. Each one addresses a real, common HR task.</p>
+
+    <div class="prompt-box">
+      <div class="prompt-label">Prompt 1 — Policy Simplification</div>
+      <p>"I'm going to paste our company's bereavement leave policy below. Please rewrite it in plain, empathetic language that a grieving employee could understand quickly. Keep all the actual policy details accurate, but remove the legalese. Format it with clear headings and bullet points."</p>
+    </div>
+
+    <div class="prompt-box">
+      <div class="prompt-label">Prompt 2 — Interview Question Generation</div>
+      <p>"I'm hiring for a Senior Customer Success Manager at a B2B SaaS company with 150 employees. The role requires strong relationship management and the ability to handle escalations calmly. Generate 8 behavioral interview questions that assess these competencies. For each question, include what a strong answer would demonstrate and one red flag to watch for."</p>
+    </div>
+
+    <div class="prompt-box">
+      <div class="prompt-label">Prompt 3 — Difficult Conversation Prep</div>
+      <p>"I need to have a conversation with a team lead about feedback I have received from two of their direct reports. The feedback is that the team lead dismisses ideas in meetings and does not give credit for work. Help me draft a conversation outline that is direct but compassionate. I want to approach this as coaching, not disciplinary action. Suggest specific phrases I can use."</p>
+    </div>
+
+    <div class="prompt-box">
+      <div class="prompt-label">Prompt 4 — Benefits Communication</div>
+      <p>"We are switching dental insurance providers on July 1. I need to write an employee announcement email that covers: what is changing, what is staying the same, the enrollment deadline, and who to contact with questions. Tone should be warm and reassuring, not corporate. Keep it under 250 words."</p>
+    </div>
+
+    <h2>Building Your Confidence</h2>
+
+    <p>If you are brand new to this, here is my suggested first-week approach:</p>
+
+    <ol>
+      <li><strong>Day 1-2:</strong> Use AI as a writing partner. Take a task you were already going to do (an email, a policy draft, a job description) and try doing it with AI first. Compare the output to what you would have written yourself.</li>
+      <li><strong>Day 3-4:</strong> Use AI as a thought partner. Describe a real HR challenge you are facing (anonymized) and ask for perspectives, frameworks, or approaches you might not have considered.</li>
+      <li><strong>Day 5:</strong> Use AI to save time on something tedious. Summarize a long document. Generate a list of onboarding tasks for a new role. Create a FAQ from an existing policy document.</li>
+    </ol>
+
+    <p>The goal for your first week is not to become an AI expert. It is to develop an intuition for what AI is good at and where you still need to apply your own judgment. That judgment, your knowledge of your people, your culture, your legal obligations, is something no AI model can replace.</p>
+
+    <h2>What Comes Next</h2>
+
+    <p>Once you are comfortable with the basics, you will start seeing opportunities everywhere. The employee handbook that needs updating. The exit interview data that has been sitting in a spreadsheet for two years. The onboarding checklist that is different every time because it lives in someone's head.</p>
+
+    <p>AI is not going to replace HR professionals. But HR professionals who know how to use AI are going to be dramatically more effective than those who do not. And the learning curve is much shorter than you think.</p>
+
+    <p>Start with one prompt today. See what happens. I think you will be surprised.</p>
+
+    <a href="../index.html#articles" class="back-link">&larr; Back to all articles</a>
+  </div>
+</article>
+
+<footer>
+  <ul class="footer-links">
+    <li><a href="../index.html#articles">Articles</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#subscribe">Subscribe</a></li>
+    <li><a href="https://www.linkedin.com/in/denmath">LinkedIn</a></li>
+  </ul>
+  <p class="footer-copy">&copy; 2026 AI for HR &middot; Built with &hearts; in San Francisco</p>
+</footer>
+
+</body>
+</html>

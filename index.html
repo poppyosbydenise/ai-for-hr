@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI for HR — Practical AI for People Operations Professionals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #2D4A3E;
+  --deep-forest: #1B3129;
+  --sage: #7A9E8E;
+  --mist: #B8CFC4;
+  --fog: #E8EDE9;
+  --cream: #F7F5F0;
+  --warm-white: #FDFCF9;
+  --bark: #5C4A3A;
+  --fern: #4A7A5E;
+  --gold: #C4A96A;
+  --text: #2A2A28;
+  --text-light: #6B6B65;
+  --text-muted: #9B9B93;
+  --coral-subtle: #D4816B;
+  --display: 'Fraunces', serif;
+  --body: 'DM Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--body);
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: 
+    linear-gradient(175deg, rgba(27,49,41,0.78) 0%, rgba(45,74,62,0.68) 40%, rgba(122,158,142,0.55) 100%),
+    url('images/hero-redwoods.jpg') center/cover no-repeat;
+  background-color: #1B3129;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 20% 80%, rgba(74,122,94,0.4) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(196,169,106,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(0,0,0,0.3) 0%, transparent 40%);
+  z-index: 1;
+}
+
+/* Fog layers */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to top, var(--cream), transparent);
+  z-index: 2;
+}
+
+.fog-layer {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  opacity: 0.08;
+  z-index: 1;
+}
+
+.fog-1 {
+  background: radial-gradient(ellipse 800px 200px at 30% 60%, white, transparent);
+  animation: drift 25s ease-in-out infinite;
+}
+
+.fog-2 {
+  background: radial-gradient(ellipse 600px 150px at 70% 40%, white, transparent);
+  animation: drift 35s ease-in-out infinite reverse;
+  opacity: 0.05;
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateX(-10%); }
+  50% { transform: translateX(10%); }
+}
+
+.redwood-trees {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Tree silhouettes */
+.trees {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  z-index: 1;
+  opacity: 0.12;
+}
+
+.tree {
+  position: absolute;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to top, var(--deep-forest), transparent);
+  border-radius: 2px 2px 0 0;
+}
+
+.tree::before {
+  content: '';
+  position: absolute;
+  bottom: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 60%;
+  background: radial-gradient(ellipse, rgba(27,49,41,0.6), transparent);
+  border-radius: 50%;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 2rem;
+  max-width: 720px;
+  animation: fadeUp 1.2s ease-out;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-tag {
+  font-family: var(--body);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.hero h1 {
+  font-family: var(--display);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  color: var(--warm-white);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--mist);
+  font-weight: 400;
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--mist);
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  background: var(--gold);
+  color: var(--deep-forest);
+  font-family: var(--body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.hero-cta:hover {
+  background: var(--warm-white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.4s ease;
+  background: transparent;
+}
+
+nav.scrolled {
+  background: rgba(253,252,249,0.95);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+  padding: 0.8rem 2rem;
+}
+
+.nav-logo {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--warm-white);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav.scrolled .nav-logo { color: var(--forest); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.3s;
+}
+
+nav.scrolled .nav-links a { color: var(--text-light); }
+.nav-links a:hover { color: var(--gold); }
+nav.scrolled .nav-links a:hover { color: var(--forest); }
+
+/* ===== SECTION SHARED ===== */
+section {
+  padding: 5rem 2rem;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--sage);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 300;
+  color: var(--forest);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.section-title em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ===== ARTICLES GRID ===== */
+.articles-section {
+  background: var(--cream);
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.article-card {
+  background: var(--warm-white);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  border: 1px solid var(--fog);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(45,74,62,0.1);
+  border-color: var(--sage);
+}
+
+.card-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.card-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(27,49,41,0.6));
+}
+
+.card-tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--warm-white);
+  background: rgba(45,74,62,0.8);
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  backdrop-filter: blur(10px);
+}
+
+.card-body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body h3 {
+  font-family: var(--display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--forest);
+  line-height: 1.35;
+  margin-bottom: 0.75rem;
+}
+
+.card-body p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.65;
+  flex: 1;
+}
+
+.card-meta {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--fog);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ===== ABOUT ===== */
+.about-section {
+  background: var(--warm-white);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 4rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.about-image {
+  aspect-ratio: 4/5;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--fog), var(--mist));
+  position: relative;
+  overflow: hidden;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.about-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  box-shadow: inset 0 0 40px rgba(45,74,62,0.1);
+}
+
+.about-text h3 {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--forest);
+  margin-bottom: 1rem;
+}
+
+.about-text p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+
+.about-text .highlight {
+  color: var(--forest);
+  font-weight: 500;
+}
+
+/* ===== SUBSCRIBE ===== */
+.subscribe-section {
+  background: var(--deep-forest);
+  color: var(--warm-white);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.subscribe-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 30% 50%, rgba(74,122,94,0.3), transparent 60%),
+    radial-gradient(ellipse at 70% 50%, rgba(196,169,106,0.1), transparent 50%);
+}
+
+.subscribe-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.subscribe-section .section-tag { color: var(--gold); }
+.subscribe-section .section-title { color: var(--warm-white); }
+
+.subscribe-section p {
+  color: var(--mist);
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  font-size: 1rem;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.subscribe-form input {
+  flex: 1;
+  padding: 0.85rem 1.2rem;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  font-family: var(--body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.subscribe-form input::placeholder { color: rgba(255,255,255,0.35); }
+.subscribe-form input:focus { border-color: var(--gold); }
+
+.subscribe-form button {
+  padding: 0.85rem 1.8rem;
+  background: var(--gold);
+  color: var(--deep-forest);
+  border: none;
+  border-radius: 4px;
+  font-family: var(--body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.subscribe-form button:hover {
+  background: var(--warm-white);
+  transform: translateY(-1px);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--cream);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--fog);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--forest); }
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .about-image { max-height: 300px; }
+  .articles-grid { grid-template-columns: 1fr; }
+  .subscribe-form { flex-direction: column; }
+  .nav-links { display: none; }
+  .hero { min-height: 75vh; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="nav-logo">AI for HR</a>
+  <ul class="nav-links">
+    <li><a href="#articles">Articles</a></li>
+    <li><a href="course.html" style="color: var(--gold) !important; font-weight: 600;">Training Course</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#subscribe">Subscribe</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="fog-layer fog-1"></div>
+  <div class="fog-layer fog-2"></div>
+  <!-- Redwood tree silhouettes as inline SVG -->
+  <svg class="redwood-trees" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background layer trees (furthest, lightest) -->
+    <g opacity="0.08" fill="#0a1f15">
+      <rect x="80" y="200" width="8" height="700" rx="4"/>
+      <ellipse cx="84" cy="350" rx="35" ry="120"/>
+      <rect x="250" y="250" width="7" height="650" rx="3"/>
+      <ellipse cx="253" cy="400" rx="30" ry="110"/>
+      <rect x="420" y="180" width="9" height="720" rx="4"/>
+      <ellipse cx="424" cy="340" rx="38" ry="130"/>
+      <rect x="600" y="220" width="7" height="680" rx="3"/>
+      <ellipse cx="603" cy="370" rx="28" ry="105"/>
+      <rect x="800" y="200" width="8" height="700" rx="4"/>
+      <ellipse cx="804" cy="350" rx="33" ry="115"/>
+      <rect x="1000" y="240" width="7" height="660" rx="3"/>
+      <ellipse cx="1003" cy="390" rx="30" ry="108"/>
+      <rect x="1180" y="190" width="9" height="710" rx="4"/>
+      <ellipse cx="1184" cy="340" rx="36" ry="125"/>
+      <rect x="1380" y="230" width="7" height="670" rx="3"/>
+      <ellipse cx="1383" cy="380" rx="28" ry="100"/>
+      <rect x="1520" y="210" width="8" height="690" rx="4"/>
+      <ellipse cx="1524" cy="360" rx="32" ry="112"/>
+    </g>
+    <!-- Midground trees -->
+    <g opacity="0.12" fill="#0a1f15">
+      <rect x="150" y="300" width="12" height="600" rx="6"/>
+      <ellipse cx="156" cy="430" rx="45" ry="140"/>
+      <rect x="350" y="280" width="14" height="620" rx="7"/>
+      <ellipse cx="357" cy="420" rx="50" ry="155"/>
+      <rect x="550" y="320" width="11" height="580" rx="5"/>
+      <ellipse cx="555" cy="450" rx="40" ry="130"/>
+      <rect x="750" y="290" width="13" height="610" rx="6"/>
+      <ellipse cx="756" cy="430" rx="48" ry="148"/>
+      <rect x="950" y="310" width="12" height="590" rx="6"/>
+      <ellipse cx="956" cy="440" rx="42" ry="135"/>
+      <rect x="1120" y="270" width="14" height="630" rx="7"/>
+      <ellipse cx="1127" cy="410" rx="52" ry="160"/>
+      <rect x="1320" y="300" width="11" height="600" rx="5"/>
+      <ellipse cx="1325" cy="440" rx="38" ry="125"/>
+      <rect x="1480" y="290" width="13" height="610" rx="6"/>
+      <ellipse cx="1486" cy="430" rx="44" ry="140"/>
+    </g>
+    <!-- Foreground trees (closest, darkest) -->
+    <g opacity="0.18" fill="#071a10">
+      <rect x="40" y="450" width="18" height="450" rx="9"/>
+      <ellipse cx="49" cy="530" rx="55" ry="150"/>
+      <rect x="300" y="400" width="20" height="500" rx="10"/>
+      <ellipse cx="310" cy="500" rx="60" ry="170"/>
+      <rect x="680" y="420" width="16" height="480" rx="8"/>
+      <ellipse cx="688" cy="510" rx="52" ry="155"/>
+      <rect x="1050" y="410" width="19" height="490" rx="9"/>
+      <ellipse cx="1059" cy="505" rx="58" ry="165"/>
+      <rect x="1400" y="440" width="17" height="460" rx="8"/>
+      <ellipse cx="1408" cy="520" rx="50" ry="145"/>
+    </g>
+    <!-- Light rays filtering through -->
+    <g opacity="0.04">
+      <polygon fill="#C4A96A" points="500,0 520,900 480,900"/>
+      <polygon fill="#C4A96A" points="900,0 925,900 875,900"/>
+      <polygon fill="#C4A96A" points="1200,0 1225,900 1175,900"/>
+    </g>
+    <!-- Low fog band -->
+    <ellipse cx="800" cy="820" rx="900" ry="120" fill="#B8CFC4" opacity="0.08"/>
+    <ellipse cx="400" cy="850" rx="600" ry="80" fill="#E8EDE9" opacity="0.06"/>
+  </svg>
+  <div class="hero-content">
+    <div class="hero-tag">✦ Practical AI for People Teams</div>
+    <h1>Make AI Work <em>for</em> Your HR Team</h1>
+    <p class="hero-sub">Guides, tools, and real-world workflows to help People Operations professionals get comfortable with AI and start building smarter systems today.</p>
+    <a href="#articles" class="hero-cta">Read the Latest ↓</a>
+  </div>
+</section>
+
+<section class="articles-section" id="articles">
+  <div class="container">
+    <div class="section-tag">✦ Articles</div>
+    <h2 class="section-title">Clear Guides for <em>Real HR Work</em></h2>
+
+    <div class="articles-grid">
+
+      <a href="articles/ai-foundations-for-hr.html" class="article-card">
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=600&q=80');">
+          <span class="card-tag">Getting Started</span>
+        </div>
+        <div class="card-body">
+          <h3>AI Foundations for HR: What You Actually Need to Know</h3>
+          <p>Skip the jargon. Here's what Claude and ChatGPT actually do, how to use them safely with employee data, and the prompting basics that will save you hours every week.</p>
+          <div class="card-meta">
+            <span>Denise Mathews</span>
+            <span>8 min read</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="articles/security-data-privacy-hr.html" class="article-card">
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=80');">
+          <span class="card-tag">Security</span>
+        </div>
+        <div class="card-body">
+          <h3>Building Privacy Into Your HR Tools From Day One</h3>
+          <p>When you're building an expense reimbursement system or onboarding bot with AI, security can't be an afterthought. How to bake data privacy into every tool you build, from access controls to anonymization.</p>
+          <div class="card-meta">
+            <span>Denise Mathews</span>
+            <span>10 min read</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="articles/build-employee-faq-bot.html" class="article-card">
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80');">
+          <span class="card-tag">Tutorial</span>
+        </div>
+        <div class="card-body">
+          <h3>Build an Employee FAQ Bot in an Afternoon</h3>
+          <p>Stop answering the same 20 questions every week. Here's how to build a Slack bot powered by Claude that handles PTO questions, benefits inquiries, and policy lookups for you.</p>
+          <div class="card-meta">
+            <span>Denise Mathews</span>
+            <span>12 min read</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="articles/writing-better-job-descriptions.html" class="article-card">
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&q=80');">
+          <span class="card-tag">Recruiting</span>
+        </div>
+        <div class="card-body">
+          <h3>Write Job Descriptions That Actually Attract Good Candidates</h3>
+          <p>Most JDs are terrible. Use AI to write inclusive, compelling job descriptions and run bias checks that catch gendered language, ableist terms, and unnecessary requirements.</p>
+          <div class="card-meta">
+            <span>Denise Mathews</span>
+            <span>7 min read</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="articles/ai-usage-policy-template.html" class="article-card">
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80');">
+          <span class="card-tag">Policy</span>
+        </div>
+        <div class="card-body">
+          <h3>Your Company Needs an AI Usage Policy. Here's a Template.</h3>
+          <p>Be the person who brings a clear, practical AI usage policy to your leadership team. Covers approved tools, data classification, prohibited uses, and incident response.</p>
+          <div class="card-meta">
+            <span>Denise Mathews</span>
+            <span>9 min read</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="articles/5-mini-agents-hr.html" class="article-card">
+        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&q=80');">
+          <span class="card-tag">Agents</span>
+        </div>
+        <div class="card-body">
+          <h3>5 Mini AI Agents Every HR Team Should Build</h3>
+          <p>From welcome bots to exit interview analyzers. Practical, lightweight AI agents you can build without being an engineer. Each one saves your team hours every week.</p>
+          <div class="card-meta">
+            <span>Denise Mathews</span>
+            <span>11 min read</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="https://agentxlair.com/Deniseheadshot.png" alt="Denise Mathews">
+      </div>
+      <div class="about-text">
+        <div class="section-tag">✦ About</div>
+        <h3>Hi, I'm Denise 👋</h3>
+        <p>I've spent my career in People Operations at startups where I was usually the first (and only) HR hire. That means I've built everything from recruiting pipelines to employee handbooks to onboarding programs, often from a blank page.</p>
+        <p><span class="highlight">What makes me different:</span> I code. I build AI automations, Slack bots, and internal tools that help small teams operate like big ones. I taught myself HTML as a kid building websites for online pet communities, and I never lost that builder instinct.</p>
+        <p>I started this blog because I kept meeting brilliant HR professionals who were curious about AI but didn't know where to start, or were worried about security and data privacy. This space is for them. <span class="highlight">No jargon, no hype, just practical guides from someone who does this work every day.</span></p>
+        <p style="margin-top: 0.5rem;">
+          <a href="https://www.linkedin.com/in/denmath" style="color: var(--forest); font-weight: 500; text-decoration: none; margin-right: 1.5rem;">LinkedIn ↗</a>
+          <a href="https://www.youtube.com/@AIandTechWithDenise" style="color: var(--forest); font-weight: 500; text-decoration: none;">YouTube ↗</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="subscribe-section" id="subscribe">
+  <div class="container">
+    <div class="section-tag">✦ Newsletter</div>
+    <h2 class="section-title" style="margin-bottom: 1rem;">AI for HR, <em>delivered weekly</em></h2>
+    <p>One email a week with practical AI guides, prompt templates, and tools for People Operations professionals. No fluff. Unsubscribe anytime.</p>
+    <div class="subscribe-form">
+      <input type="email" placeholder="your@email.com">
+      <button>Subscribe ✦</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <ul class="footer-links">
+    <li><a href="#articles">Articles</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#subscribe">Subscribe</a></li>
+    <li><a href="https://www.linkedin.com/in/denmath">LinkedIn</a></li>
+    <li><a href="/cdn-cgi/l/email-protection#482c2d26213b2d25293c202d3f3b787b082f25292124662b2725">Contact</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 AI for HR · Built with ♥ in San Francisco</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Intersection observer for fade-in cards
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      entry.target.style.animation = `fadeUp 0.6s ease-out ${i * 0.1}s forwards`;
+      entry.target.style.opacity = '1';
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold:

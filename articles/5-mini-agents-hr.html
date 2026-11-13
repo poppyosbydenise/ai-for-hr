@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Mini AI Agents Every HR Team Should Build — AI for HR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #2D4A3E;
+  --deep-forest: #1B3129;
+  --sage: #7A9E8E;
+  --mist: #B8CFC4;
+  --fog: #E8EDE9;
+  --cream: #F7F5F0;
+  --warm-white: #FDFCF9;
+  --bark: #5C4A3A;
+  --gold: #C4A96A;
+  --text: #2A2A28;
+  --text-light: #6B6B65;
+  --text-muted: #9B9B93;
+  --display: 'Fraunces', serif;
+  --body: 'DM Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--body);
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(253,252,249,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--fog);
+}
+
+.nav-logo {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--forest);
+  text-decoration: none;
+}
+
+.nav-back {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-back:hover { color: var(--forest); }
+
+.article-header {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+}
+
+.article-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sage);
+  background: var(--fog);
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+  margin-bottom: 1.2rem;
+}
+
+.article-header h1 {
+  font-family: var(--display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--deep-forest);
+  margin-bottom: 1.2rem;
+}
+
+.article-meta {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.article-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+}
+
+.article-body p {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+.article-body h2 {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--deep-forest);
+  margin: 2.5rem 0 1rem;
+}
+
+.article-body h3 {
+  font-family: var(--display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--forest);
+  margin: 2rem 0 0.8rem;
+}
+
+.article-body ul, .article-body ol {
+  margin: 0 0 1.5rem 1.5rem;
+  font-size: 1.05rem;
+}
+
+.article-body li { margin-bottom: 0.5rem; }
+.article-body strong { color: var(--deep-forest); }
+
+.callout {
+  background: var(--fog);
+  border-left: 3px solid var(--sage);
+  padding: 1.2rem 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.95rem;
+}
+
+.callout p { margin-bottom: 0.5rem; color: var(--forest); }
+.callout p:last-child { margin-bottom: 0; }
+
+code {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.88em;
+  background: var(--fog);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+
+pre {
+  background: var(--deep-forest);
+  color: var(--mist);
+  padding: 1.5rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* Agent cards */
+.agent-card {
+  background: var(--warm-white);
+  border: 1px solid var(--fog);
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.agent-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.agent-number {
+  font-family: var(--display);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--mist);
+  line-height: 1;
+}
+
+.agent-stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.agent-stat {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  background: var(--fog);
+  color: var(--text-light);
+}
+
+.agent-stat.complexity-1, .agent-stat.complexity-2 { color: var(--sage); }
+.agent-stat.complexity-3 { color: var(--gold); }
+.agent-stat.complexity-4, .agent-stat.complexity-5 { color: var(--bark); }
+
+.agent-card h3 {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--deep-forest);
+  margin: 0 0 0.5rem;
+}
+
+.agent-card p {
+  font-size: 0.98rem;
+  margin-bottom: 1rem;
+}
+
+.agent-card h4 {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 1.2rem 0 0.5rem;
+}
+
+.agent-card ul {
+  margin: 0 0 1rem 1.3rem;
+  font-size: 0.95rem;
+}
+
+.agent-card li { margin-bottom: 0.3rem; }
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--forest);
+  text-decoration: none;
+  margin-top: 2rem;
+  transition: gap 0.3s;
+}
+.back-link:hover { gap: 0.6rem; }
+
+footer {
+  background: var(--cream);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--fog);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--forest); }
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 680px) {
+  .article-header { padding: 3rem 1.5rem 1.5rem; }
+  .article-body { padding: 1.5rem 1.5rem 3rem; }
+  .agent-card { padding: 1.5rem; }
+  .agent-card-header { flex-direction: column; }
+  .footer-links { flex-wrap: wrap; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">AI for HR</a>
+  <a href="../index.html#articles" class="nav-back">&larr; All Articles</a>
+</nav>
+
+<header class="article-header">
+  <span class="article-tag">Agents</span>
+  <h1>5 Mini AI Agents Every HR Team Should Build</h1>
+  <div class="article-meta">
+    <span>Denise Mathews</span>
+    <span>March 20, 2026</span>
+    <span>11 min read</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+<p>Let's start by demystifying something: an "AI agent" doesn't have to be a sophisticated autonomous system that plans, reasons, and acts on its own. For HR purposes, a mini agent can be as simple as a saved prompt connected to a data source that does one specific thing really well. Think of it less like hiring a robot and more like setting up a really smart email filter. It runs when triggered, follows rules you define, and handles a task you'd rather not do manually for the hundredth time.</p>
+
+<p>I've built all five of these agents for HR teams I've worked with. None of them required a software engineer. All of them saved real, measurable hours. And every one of them can be built using tools you probably already have access to: an AI assistant like Claude, a spreadsheet, maybe a Slack workspace, and a bit of patience.</p>
+
+<p>For each agent below, I'll tell you what it does, what you need, how complex it is on a 1-to-5 scale, roughly how long it takes to build, and enough of an implementation sketch that you could start today.</p>
+
+<div class="agent-card">
+  <div class="agent-card-header">
+    <span class="agent-number">01</span>
+    <div class="agent-stats">
+      <span class="agent-stat complexity-2">Complexity: 2/5</span>
+      <span class="agent-stat">Build time: 2-3 hours</span>
+    </div>
+  </div>
+  <h3>New Hire Welcome Bot</h3>
+  <p>That first week at a new job is overwhelming. New hires have dozens of questions they feel embarrassed to ask: Where do I find the PTO policy? How do I set up direct deposit? What's the WiFi password? Who do I talk to about my parking pass? Most companies dump all of this into a 47-page onboarding doc that nobody reads.</p>
+  <p>This agent takes your existing onboarding materials and turns them into a conversational Q&A bot that new hires can message naturally.</p>
+
+  <h4>What you need</h4>
+  <ul>
+    <li>Your onboarding documents (handbook, FAQ, benefits guide, IT setup instructions)</li>
+    <li>A Claude or ChatGPT Team account with Projects or Custom GPTs</li>
+    <li>Optionally: a Slack integration so new hires can message the bot directly</li>
+  </ul>
+
+  <h4>How to build it</h4>
+  <p>The simplest version takes about two hours. Create a new Project in Claude (or a Custom GPT in ChatGPT) and upload your onboarding documents. Then write a system prompt like this:</p>
+
+<pre><code>You are the onboarding assistant for [Company Name]. Your job is to
+answer new hire questions using ONLY the information in the uploaded
+documents.
+
+Rules:
+- Be warm, friendly, and encouraging. Starting a new job is stressful.
+- If the answer is in the documents, provide it with the specific
+  source (e.g., "According to the Employee Handbook, page 12...").
+- If the answer is NOT in the documents, say so honestly and tell
+  them who to contact (their manager or HR at hr@company.com).
+- Never make up policies or benefits that aren't in the documents.
+- Keep answers concise — 2-3 sentences when possible.
+- If they ask about something sensitive (compensation, performance
+  issues, complaints), direct them to their HRBP.</code></pre>
+
+  <p>That's it. Share the link with new hires on their first day. For a more polished experience, you can connect it to Slack using Zapier or a native integration, so new hires can message a bot channel instead of navigating to a separate tool.</p>
+
+  <div class="callout">
+    <p><strong>Real-world impact:</strong> At one company where I set this up, new hire questions to the HR team dropped by about 40% in the first month. The questions that did come through were the complex, human-judgment kind that actually needed a person.</p>
+  </div>
+</div>
+
+<div class="agent-card">
+  <div class="agent-card-header">
+    <span class="agent-number">02</span>
+    <div class="agent-stats">
+      <span class="agent-stat complexity-2">Complexity: 2/5</span>
+      <span class="agent-stat">Build time: 1-2 hours</span>
+    </div>
+  </div>
+  <h3>PTO Balance Checker</h3>
+  <p>"How much PTO do I have left?" might be the single most frequently asked question in all of HR. It's also one of the most annoying, because the answer is almost always sitting in a system the employee could check themselves, if they remembered how to log in, which tab to click, and where to find the right number.</p>
+  <p>This agent connects to your PTO data and lets employees ask about their balance in plain English.</p>
+
+  <h4>What you need</h4>
+  <ul>
+    <li>PTO balance data exported from your HRIS (even a simple spreadsheet works)</li>
+    <li>A Claude Project or similar AI tool with file upload</li>
+    <li>A process to update the data weekly or bi-weekly</li>
+  </ul>
+
+  <h4>How to build it</h4>
+  <p>Export a CSV from your HRIS with columns like: Employee Name, Department, PTO Accrued, PTO Used, PTO Remaining, Sick Days Remaining. Upload it to a Claude Project with this system prompt:</p>
+
+<pre><code>You are the PTO balance assistant for [Company Name]. You have access
+to current PTO balance data.
+
+When an employee asks about their balance:
+1. Ask for their name if they haven't provided it
+2. Look up their record in the data
+3. Share their balances: PTO remaining, sick days remaining
+4. If they ask about the PTO policy (accrual rates, blackout dates,
+   rollover rules), answer from the policy document
+5. If they want to request time off, direct them to [your HRIS name]
+   and provide the direct link: [URL]
+
+Never share one employee's balance with another employee.
+Keep responses brief and helpful.</code></pre>
+
+  <p>The important caveat: this works best as an internal tool where you control access. For companies with strict data privacy requirements, you may want to limit this to a self-service model where the employee can only look up their own data. Many HRIS platforms are adding AI chat features natively, so check if yours already supports this before building from scratch.</p>
+</div>
+
+<div class="agent-card">
+  <div class="agent-card-header">
+    <span class="agent-number">03</span>
+    <div class="agent-stats">
+      <span class="agent-stat complexity-3">Complexity: 3/5</span>
+      <span class="agent-stat">Build time: 3-4 hours</span>
+    </div>
+  </div>
+  <h3>Exit Interview Theme Analyzer</h3>
+  <p>This is one of my favorites because it solves a problem that drives most HR teams crazy: you conduct exit interviews, you take notes, you file them away, and then what? Nobody has time to read through 50 exit interview transcripts looking for patterns. So the insights just sit there, unused.</p>
+  <p>This agent reads your exit interview data and surfaces recurring themes, giving you actionable insights you can bring to leadership.</p>
+
+  <h4>What you need</h4>
+  <ul>
+    <li>Exit interview notes or transcripts (can be messy, the AI handles it)</li>
+    <li>A Claude or ChatGPT account with file upload</li>
+    <li>At least 10-15 exit interviews to analyze (fewer than that and patterns aren't reliable)</li>
+  </ul>
+
+  <h4>How to build it</h4>
+  <p>Compile your exit interview notes into a single document or spreadsheet. Then use this prompt:</p>
+
+<pre><code>I'm uploading [X] exit interview transcripts from the past
+[time period]. Please analyze them and provide:
+
+1. TOP THEMES: The 5 most frequently mentioned reasons for leaving,
+   ranked by frequency. For each, include a representative quote.
+
+2. DEPARTMENT PATTERNS: Are there departments or teams with notably
+   higher dissatisfaction? What specifically are people saying?
+
+3. MANAGEMENT SIGNALS: What are departing employees saying about
+   their managers? Look for patterns in both positive and negative
+   feedback.
+
+4. RETENTION OPPORTUNITIES: Based on these interviews, what are
+   2-3 specific, actionable changes that might have retained some
+   of these employees?
+
+5. TREND COMPARISON: [If you've run this before] How do these
+   themes compare to the previous quarter?
+
+Important: Do not include any employee names in your analysis.
+Keep all insights anonymous and aggregated.</code></pre>
+
+  <p>The first time you run this, the output will surprise you. Patterns that would take a human days to identify, like "four of the last seven departures from the engineering team mentioned the same skip-level manager," pop out immediately.</p>
+
+  <div class="callout">
+    <p><strong>Make it recurring:</strong> Run this analysis quarterly. Save each output. Over time, you'll build a trend line that's incredibly powerful in leadership conversations. "Compensation was theme #3 in Q1 but moved to #1 in Q3" is the kind of data that gets budgets approved.</p>
+  </div>
+</div>
+
+<div class="agent-card">
+  <div class="agent-card-header">
+    <span class="agent-number">04</span>
+    <div class="agent-stats">
+      <span class="agent-stat complexity-2">Complexity: 2/5</span>
+      <span class="agent-stat">Build time: 2-3 hours</span>
+    </div>
+  </div>
+  <h3>Benefits Question Answerer</h3>
+  <p>Open enrollment season. Just reading those two words probably raised your blood pressure. Every year, employees have the same questions: What's the difference between the PPO and the HDHP? Does the dental plan cover orthodontics? Can I add my partner if we're not married? And every year, HR answers the same questions dozens or hundreds of times.</p>
+  <p>This agent turns your benefits documentation into an always-available, infinitely patient benefits counselor.</p>
+
+  <h4>What you need</h4>
+  <ul>
+    <li>Your benefits summary documents (SPDs, plan comparison sheets, enrollment guides)</li>
+    <li>A Claude Project or Custom GPT</li>
+    <li>Optionally: a Slack or Teams integration</li>
+  </ul>
+
+  <h4>How to build it</h4>
+  <p>Upload your benefits documents and use this system prompt:</p>
+
+<pre><code>You are the benefits assistant for [Company Name]. You help
+employees understand their benefits options using the uploaded
+plan documents.
+
+Rules:
+- Answer questions clearly and in plain language. Avoid insurance
+  jargon — if you must use a term like "deductible" or "out-of-pocket
+  maximum," explain what it means.
+- When comparing plans, use simple tables or side-by-side format.
+- Always cite which plan document or page your answer comes from.
+- For questions about specific claims, coverage disputes, or
+  appeals, direct them to [benefits broker name] at [email/phone].
+- Never recommend a specific plan. Instead, help them understand
+  the tradeoffs so they can choose for themselves.
+- If a question involves a medical situation, remind them that
+  you're an AI assistant and suggest they consult with their
+  doctor or the insurance carrier directly for medical advice.</code></pre>
+
+  <p>This is especially powerful during open enrollment. Deploy it two weeks before enrollment opens and include the link in your enrollment announcement email. You can also seed it with common questions and answers that aren't in the formal documents, like "Where do I find my insurance card?" or "When does coverage start for new hires?"</p>
+</div>
+
+<div class="agent-card">
+  <div class="agent-card-header">
+    <span class="agent-number">05</span>
+    <div class="agent-stats">
+      <span class="agent-stat complexity-3">Complexity: 3/5</span>
+      <span class="agent-stat">Build time: 3-5 hours</span>
+    </div>
+  </div>
+  <h3>Performance Review Draft Helper</h3>
+  <p>Performance review season is the other thing that makes HR professionals' eyes twitch. Not because the reviews themselves are hard, but because getting managers to write them is like pulling teeth. They procrastinate, they write two generic sentences, or they dump a wall of text that doesn't actually assess performance.</p>
+  <p>This agent helps managers write better first drafts of performance reviews by guiding them through a structured process.</p>
+
+  <h4>What you need</h4>
+  <ul>
+    <li>Your company's performance review template or rubric</li>
+    <li>Your competency framework or leveling guide (if you have one)</li>
+    <li>A Claude or ChatGPT account</li>
+  </ul>
+
+  <h4>How to build it</h4>
+  <p>This one works best as an interactive conversation, not a one-shot prompt. Upload your review template and competency framework, then use this system prompt:</p>
+
+<pre><code>You are a performance review writing assistant for managers at
+[Company Name]. Your job is to help managers write thoughtful,
+specific, and fair performance reviews.
+
+Process:
+1. Ask the manager for the employee's name, role, and level
+2. Ask them to share 3-5 key accomplishments from the review period
+3. Ask about any areas where the employee could grow or improve
+4. Ask for a proposed overall rating (using our scale: [your scale])
+5. Draft a complete review using our template format
+
+Writing guidelines:
+- Use specific examples, not vague praise ("Led the Q3 migration
+  project" not "is a great team player")
+- Balance strengths and growth areas — every review should have both
+- Avoid recency bias — ask about the full review period
+- Flag if the language might be perceived as biased (gendered terms,
+  personality-based criticism vs. behavior-based feedback)
+- Match the tone to our company culture: direct but supportive
+
+Important: This draft must be reviewed and edited by the manager.
+Make it clear that AI-generated reviews must be personalized and
+fact-checked before submission. Remind the manager at the end of
+the draft.</code></pre>
+
+  <p>The key insight here is that managers don't hate writing reviews. They hate staring at a blank page. Give them a solid first draft and they'll happily edit and personalize it. Most managers I've worked with cut their review-writing time from 45 minutes per report to about 15.</p>
+
+  <div class="callout">
+    <p><strong>Important safeguard:</strong> Always remind managers that AI-drafted reviews must be reviewed for accuracy. The AI doesn't know what actually happened. It's organizing the information the manager provides into a well-structured review. The manager is still responsible for the content being true and fair.</p>
+  </div>
+</div>
+
+<h2>Where to Start</h2>
+
+<p>If you're looking at these five agents and wondering which one to build first, here's my recommendation: start with the one that solves your most annoying recurring problem. For most teams, that's either the Benefits Question Answerer (especially if open enrollment is coming up) or the New Hire Welcome Bot (especially if you're in a growth phase).</p>
+
+<p>Build one. Use it for a month. Measure how much time it saves. Then bring those numbers to your next leadership meeting when you ask for a Claude Team subscription for the whole HR department.</p>
+
+<p>The beauty of mini agents is that they compound. Each one you build teaches you a little more about how to work with AI effectively. By agent number three, you'll be building them in an hour and wondering how you ever functioned without them.</p>
+
+<p>And here's the thing nobody tells you about building AI tools for your team: it changes how people see HR. You stop being the department that sends reminder emails about open enrollment. You become the team that builds tools that make everyone's life easier. That's a reputation worth investing a few hours in.</p>
+
+<a href="../index.html#articles" class="back-link">&larr; Back to all articles</a>
+
+</article>
+
+<footer>
+  <ul class="footer-links">
+    <li><a href="../index.html#articles">Articles</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#subscribe">Subscribe</a></li>
+    <li><a href="https://www.linkedin.com/in/denmath">LinkedIn</a></li>
+  </ul>
+  <p class="footer-copy">&copy; 2026 AI for HR &middot; Built with &hearts; in San Francisco</p>
+</footer>
+
+</body>
+</html>

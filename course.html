@@ -1,0 +1,2158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI for HR Training Course — Get Comfortable with AI, Step by Step</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #2D4A3E;
+  --deep-forest: #1B3129;
+  --sage: #7A9E8E;
+  --mist: #B8CFC4;
+  --fog: #E8EDE9;
+  --cream: #F7F5F0;
+  --warm-white: #FDFCF9;
+  --bark: #5C4A3A;
+  --fern: #4A7A5E;
+  --gold: #C4A96A;
+  --text: #2A2A28;
+  --text-light: #6B6B65;
+  --text-muted: #9B9B93;
+  --terminal-bg: #0F1A14;
+  --terminal-green: #7AE8A0;
+  --terminal-dim: #4A6B55;
+  --terminal-cursor: #C4A96A;
+  --display: 'Fraunces', serif;
+  --body: 'DM Sans', sans-serif;
+  --mono: 'DM Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--body);
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(253,252,249,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--fog);
+}
+
+.nav-logo {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--forest);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--forest); }
+
+.nav-badge {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--deep-forest);
+  background: var(--gold);
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+}
+
+/* ===== HERO ===== */
+.course-hero {
+  padding: 8rem 2rem 4rem;
+  text-align: center;
+  background: var(--deep-forest);
+  position: relative;
+  overflow: hidden;
+}
+
+.course-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(74,122,94,0.3), transparent 60%),
+    radial-gradient(ellipse at 70% 50%, rgba(196,169,106,0.12), transparent 50%);
+}
+
+.course-hero .container {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hero-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.course-hero h1 {
+  font-family: var(--display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 300;
+  color: var(--warm-white);
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.course-hero h1 em {
+  font-style: italic;
+  color: var(--mist);
+  font-weight: 400;
+}
+
+.course-hero p {
+  font-size: 1.05rem;
+  color: var(--mist);
+  max-width: 540px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+
+.hero-start-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  background: var(--gold);
+  color: var(--deep-forest);
+  font-family: var(--body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-start-btn:hover {
+  background: var(--warm-white);
+  transform: translateY(-2px);
+}
+
+/* ===== TRACK SELECTOR ===== */
+.tracks-section {
+  padding: 5rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--sage);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 300;
+  color: var(--forest);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.section-title em { font-style: italic; font-weight: 400; }
+
+.section-sub {
+  font-size: 1rem;
+  color: var(--text-light);
+  max-width: 560px;
+  margin-bottom: 3rem;
+}
+
+.tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.track-card {
+  background: var(--warm-white);
+  border: 1px solid var(--fog);
+  border-radius: 8px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.track-card:hover {
+  border-color: var(--sage);
+  transform: translateY(-3px);
+}
+
+.track-card.active {
+  border-color: var(--forest);
+  background: var(--fog);
+}
+
+.track-icon {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.track-card h3 {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--forest);
+  margin-bottom: 0.5rem;
+}
+
+.track-card p {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.track-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.track-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* ===== WALKTHROUGH ===== */
+.walkthrough-section {
+  display: none;
+  padding: 0 2rem 5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.walkthrough-section.visible {
+  display: block;
+  animation: fadeUp 0.5s ease-out;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.walkthrough-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--fog);
+}
+
+.walkthrough-title {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--forest);
+}
+
+.walkthrough-back {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.walkthrough-back:hover { color: var(--forest); }
+
+/* Progress bar */
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--fog);
+  border-radius: 2px;
+  margin-bottom: 2.5rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+  width: 0%;
+}
+
+/* Layout: steps sidebar + main content */
+.walkthrough-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 3rem;
+}
+
+/* Step list sidebar */
+.step-list {
+  list-style: none;
+  position: sticky;
+  top: 5rem;
+  align-self: start;
+}
+
+.step-list li {
+  padding: 0.6rem 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all 0.3s;
+  border-left: 2px solid transparent;
+  padding-left: 1rem;
+}
+
+.step-list li:hover { color: var(--text-light); }
+
+.step-list li.active {
+  color: var(--forest);
+  font-weight: 600;
+  border-left-color: var(--gold);
+}
+
+.step-list li.completed {
+  color: var(--sage);
+}
+
+.step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--fog);
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.step-list li.active .step-dot { background: var(--gold); }
+.step-list li.completed .step-dot { background: var(--sage); }
+
+/* Main content area */
+.step-content {
+  min-height: 500px;
+}
+
+.step-panel {
+  display: none;
+}
+
+.step-panel.active {
+  display: block;
+  animation: fadeUp 0.4s ease-out;
+}
+
+.step-panel h2 {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--forest);
+  margin-bottom: 0.5rem;
+}
+
+.step-number {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.step-panel p {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-bottom: 1.25rem;
+  line-height: 1.75;
+}
+
+.step-panel strong {
+  color: var(--text);
+}
+
+/* Terminal simulation */
+.terminal {
+  background: var(--terminal-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(122,232,160,0.1);
+}
+
+.terminal-bar {
+  background: rgba(255,255,255,0.06);
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.terminal-dot.red { background: #FF5F56; }
+.terminal-dot.yellow { background: #FFBD2E; }
+.terminal-dot.green { background: #27C93F; }
+
+.terminal-title {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--terminal-dim);
+  margin-left: 0.5rem;
+}
+
+.terminal-body {
+  padding: 1.25rem 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  line-height: 1.8;
+  min-height: 120px;
+}
+
+.terminal-line {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.terminal-line.visible {
+  opacity: 1;
+}
+
+.terminal-prompt {
+  color: var(--terminal-green);
+}
+
+.terminal-command {
+  color: var(--warm-white);
+}
+
+.terminal-output {
+  color: var(--terminal-dim);
+}
+
+.terminal-comment {
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background: var(--terminal-cursor);
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Typing animation for terminal */
+.typing-text {
+  display: inline;
+  border-right: 2px solid var(--terminal-cursor);
+  animation: blink-caret 0.8s step-end infinite;
+}
+
+@keyframes blink-caret {
+  50% { border-color: transparent; }
+}
+
+/* Callout / tip boxes */
+.callout {
+  background: rgba(122,158,142,0.1);
+  border-left: 3px solid var(--sage);
+  padding: 1rem 1.25rem;
+  border-radius: 0 6px 6px 0;
+  margin: 1.25rem 0;
+}
+
+.callout-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--forest);
+  margin-bottom: 0.4rem;
+}
+
+.callout p {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  margin-bottom: 0;
+}
+
+.callout.warning {
+  background: rgba(196,169,106,0.1);
+  border-left-color: var(--gold);
+}
+
+/* What this does explanation */
+.explainer {
+  background: var(--warm-white);
+  border: 1px solid var(--fog);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.25rem 0;
+}
+
+.explainer-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--sage);
+  margin-bottom: 0.5rem;
+}
+
+.explainer p {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.explainer p:last-child { margin-bottom: 0; }
+
+/* Try it prompt box */
+.try-it {
+  background: var(--fog);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.try-it-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 0.75rem;
+}
+
+.try-it textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--mist);
+  border-radius: 6px;
+  background: var(--warm-white);
+  font-family: var(--body);
+  font-size: 0.9rem;
+  color: var(--text);
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.try-it textarea:focus { border-color: var(--forest); }
+
+.try-it textarea::placeholder { color: var(--text-muted); }
+
+/* Copy button */
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(122,232,160,0.15);
+  border-radius: 4px;
+  color: var(--terminal-dim);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.copy-btn:hover {
+  background: rgba(255,255,255,0.12);
+  color: var(--terminal-green);
+}
+
+.terminal { position: relative; }
+
+/* Navigation buttons */
+.step-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--fog);
+}
+
+.step-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  font-family: var(--body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+  letter-spacing: 0.04em;
+}
+
+.step-btn-next {
+  background: var(--forest);
+  color: var(--warm-white);
+}
+
+.step-btn-next:hover {
+  background: var(--deep-forest);
+  transform: translateY(-1px);
+}
+
+.step-btn-prev {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--fog);
+}
+
+.step-btn-prev:hover {
+  color: var(--text);
+  border-color: var(--mist);
+}
+
+.step-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+  transform: none;
+}
+
+/* Completion screen */
+.completion {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.completion-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.completion h2 {
+  font-family: var(--display);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--forest);
+  margin-bottom: 1rem;
+}
+
+.completion p {
+  font-size: 1rem;
+  color: var(--text-light);
+  max-width: 500px;
+  margin: 0 auto 2rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .walkthrough-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .step-list {
+    position: static;
+    display: flex;
+    overflow-x: auto;
+    gap: 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--fog);
+    margin-bottom: 1.5rem;
+  }
+  .step-list li {
+    border-left: none;
+    border-bottom: 2px solid transparent;
+    padding: 0.5rem 0.8rem;
+    white-space: nowrap;
+    font-size: 0.75rem;
+  }
+  .step-list li.active {
+    border-bottom-color: var(--gold);
+  }
+  .tracks-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .walkthrough-header { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--cream);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--fog);
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">AI for HR</a>
+  <ul class="nav-links">
+    <li><a href="index.html#articles">Articles</a></li>
+    <li><span class="nav-badge">Training Course</span></li>
+    <li><a href="index.html#about">About</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="course-hero">
+  <div class="container">
+    <div class="hero-tag">✦ Interactive Training Course</div>
+    <h1>Get Comfortable with AI,<br><em>One Step at a Time</em></h1>
+    <p>Pick a track below, type each command yourself, and learn what every line does. No shortcuts, no copy-pasting — you're actually doing it.</p>
+    <button class="hero-start-btn" onclick="document.getElementById('tracks').scrollIntoView({behavior:'smooth'})">Choose a Track ↓</button>
+  </div>
+</section>
+
+<!-- TRACK SELECTOR -->
+<section class="tracks-section" id="tracks">
+  <div class="section-tag">✦ Choose Your Path</div>
+  <h2 class="section-title">Pick a track. <em>Start building.</em></h2>
+  <p class="section-sub">Each track walks you through real tasks, step by step. You'll type real commands, write real prompts, and build real things.</p>
+
+  <div class="tracks-grid">
+
+    <div class="track-card" onclick="loadTrack('terminal')">
+      <div class="track-icon">⬛</div>
+      <h3>Terminal Basics for HR</h3>
+      <p>Open your terminal for the first time, navigate folders, and run your first commands. Less scary than it sounds.</p>
+      <div class="track-meta">
+        <span>📖 6 steps</span>
+        <span>⏱ 15 min</span>
+        <span>🌱 Beginner</span>
+      </div>
+    </div>
+
+    <div class="track-card" onclick="loadTrack('firstprompt')">
+      <div class="track-icon">💬</div>
+      <h3>Your First AI Prompt</h3>
+      <p>Learn to talk to Claude like a pro. Write prompts that actually get useful results for HR tasks, not generic fluff.</p>
+      <div class="track-meta">
+        <span>📖 7 steps</span>
+        <span>⏱ 20 min</span>
+        <span>🌱 Beginner</span>
+      </div>
+    </div>
+
+    <div class="track-card" onclick="loadTrack('faqbot')">
+      <div class="track-icon">🤖</div>
+      <h3>Build an FAQ Bot</h3>
+      <p>Create a simple bot that answers employee questions about PTO, benefits, and company policies — so you don't have to.</p>
+      <div class="track-meta">
+        <span>📖 8 steps</span>
+        <span>⏱ 30 min</span>
+        <span>🌿 Intermediate</span>
+      </div>
+    </div>
+
+    <div class="track-card" onclick="loadTrack('policy')">
+      <div class="track-icon">📋</div>
+      <h3>Draft an AI Policy</h3>
+      <p>Use AI to help you write your company's AI usage policy. Yes, it's meta — and it works beautifully.</p>
+      <div class="track-meta">
+        <span>📖 5 steps</span>
+        <span>⏱ 15 min</span>
+        <span>🌱 Beginner</span>
+      </div>
+    </div>
+
+    <div class="track-card" onclick="loadTrack('jd')">
+      <div class="track-icon">📝</div>
+      <h3>Rewrite a Job Description</h3>
+      <p>Take a boring, biased JD and transform it into something that actually attracts great candidates — with AI as your editor.</p>
+      <div class="track-meta">
+        <span>📖 6 steps</span>
+        <span>⏱ 20 min</span>
+        <span>🌱 Beginner</span>
+      </div>
+    </div>
+
+    <div class="track-card" onclick="loadTrack('data')">
+      <div class="track-icon">🔒</div>
+      <h3>Classify Your HR Data</h3>
+      <p>Walk through your real HR data and learn exactly what's safe to use with AI tools — and what never leaves your system.</p>
+      <div class="track-meta">
+        <span>📖 5 steps</span>
+        <span>⏱ 15 min</span>
+        <span>🌱 Beginner</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WALKTHROUGH AREA -->
+<section class="walkthrough-section" id="walkthrough">
+  <div class="walkthrough-header">
+    <h2 class="walkthrough-title" id="walkthrough-title"></h2>
+    <a class="walkthrough-back" onclick="closeTrack()">← Back to all tracks</a>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+
+  <div class="walkthrough-layout">
+    <ul class="step-list" id="step-list"></ul>
+    <div class="step-content" id="step-content"></div>
+  </div>
+
+  <div class="step-nav">
+    <button class="step-btn step-btn-prev" id="prev-btn" onclick="prevStep()">← Previous</button>
+    <button class="step-btn step-btn-next" id="next-btn" onclick="nextStep()">Next Step →</button>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-copy">© 2026 AI for HR · Built with ♥ in San Francisco</p>
+</footer>
+
+<script>
+// ===== TRACK DATA =====
+const tracks = {
+  terminal: {
+    title: "Terminal Basics for HR",
+    steps: [
+      {
+        title: "Open Your Terminal",
+        number: "Step 1 of 6",
+        content: `
+          <p>The terminal is just a text-based way to talk to your computer. Instead of clicking folders, you type commands. That's it. It's not hacking — it's typing.</p>
+          <p><strong>On Mac:</strong> Press <strong>⌘ + Space</strong>, type <strong>Terminal</strong>, and hit Enter.</p>
+          <p><strong>On Windows:</strong> Press the <strong>Windows key</strong>, type <strong>PowerShell</strong>, and hit Enter.</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Terminal</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-comment"># You'll see something like this:</span></div>
+              <div class="terminal-line" data-delay="600"><span class="terminal-prompt">denise@macbook ~ % </span><span class="terminal-cursor"></span></div>
+            </div>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">What you're seeing</div>
+            <p>That's your <strong>prompt</strong>. It shows your username, your computer's name, and where you are in the file system. The <strong>~</strong> means you're in your home folder. It's waiting for you to type something.</p>
+          </div>
+          <div class="callout">
+            <div class="callout-title">💡 You can't break anything</div>
+            <p>Seriously. The commands we'll use here just look at files and folders. You're browsing, not deleting. Relax and explore.</p>
+          </div>
+        `
+      },
+      {
+        title: "Look Around",
+        number: "Step 2 of 6",
+        content: `
+          <p>Your first command: <strong>ls</strong> — which stands for "list." It shows you what's in the current folder. Type it and press Enter.</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Terminal</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-prompt">~ % </span><span class="terminal-command">ls</span></div>
+              <div class="terminal-line" data-delay="800"><span class="terminal-output">Applications    Documents    Library    Pictures</span></div>
+              <div class="terminal-line" data-delay="900"><span class="terminal-output">Desktop         Downloads    Movies     Public</span></div>
+            </div>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">What just happened</div>
+            <p>You asked your computer "What's in this folder?" and it showed you. These are the same folders you'd see in Finder or File Explorer — you're just looking at them through text instead of icons.</p>
+          </div>
+          <div class="try-it">
+            <div class="try-it-label">✦ Your turn — type it yourself</div>
+            <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.75rem;">Go to your real terminal and type <strong>ls</strong>, then press Enter. What folders do you see? Jot them down here:</p>
+            <textarea placeholder="I see: Desktop, Documents, Downloads..."></textarea>
+          </div>
+        `
+      },
+      {
+        title: "Move Between Folders",
+        number: "Step 3 of 6",
+        content: `
+          <p>Now let's move into a folder. The command is <strong>cd</strong> — which stands for "change directory." A directory is just a fancy word for folder.</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Terminal</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-prompt">~ % </span><span class="terminal-command">cd Desktop</span></div>
+              <div class="terminal-line" data-delay="800"><span class="terminal-prompt">Desktop % </span><span class="terminal-command">ls</span></div>
+              <div class="terminal-line" data-delay="1600"><span class="terminal-output">Q1-Report.pdf    team-photo.png    onboarding-checklist.docx</span></div>
+            </div>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">What just happened</div>
+            <p><strong>cd Desktop</strong> moved you into your Desktop folder. Notice the prompt changed from <strong>~</strong> to <strong>Desktop</strong> — it always shows where you are. Then <strong>ls</strong> showed the files on your actual desktop.</p>
+          </div>
+          <p>To go back up one level:</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Terminal</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-prompt">Desktop % </span><span class="terminal-command">cd ..</span></div>
+              <div class="terminal-line" data-delay="800"><span class="terminal-prompt">~ % </span><span class="terminal-comment"># Back home!</span></div>
+            </div>
+          </div>
+          <div class="callout">
+            <div class="callout-title">💡 The two dots</div>
+            <p><strong>..</strong> always means "the folder above this one." Think of it as going back. You'll use this a lot.</p>
+          </div>
+          <div class="try-it">
+            <div class="try-it-label">✦ Your turn</div>
+            <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.75rem;">Navigate to your Documents folder, list what's inside, then come back. Write the three commands you used:</p>
+            <textarea placeholder="cd Documents\nls\ncd .."></textarea>
+          </div>
+        `
+      },
+      {
+        title: "Create a Folder",
+        number: "Step 4 of 6",
+        content: `
+          <p>Let's make something. The command <strong>mkdir</strong> stands for "make directory" — it creates a new folder.</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Terminal</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-prompt">~ % </span><span class="terminal-command">cd Desktop</span></div>
+              <div class="terminal-line" data-delay="600"><span class="terminal-prompt">Desktop % </span><span class="terminal-command">mkdir hr-ai-projects</span></div>
+              <div class="terminal-line" data-delay="1200"><span class="terminal-prompt">Desktop % </span><span class="terminal-command">ls</span></div>
+              <div class="terminal-line" data-delay="1800"><span class="terminal-output">Q1-Report.pdf    hr-ai-projects    onboarding-checklist.docx</span></div>
+            </div>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">What just happened</div>
+            <p>You created a brand new folder called <strong>hr-ai-projects</strong> on your Desktop. If you switch to Finder right now, you'll see it sitting there. You just created something with the terminal!</p>
+          </div>
+          <p>Now let's move into it and create a file:</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Terminal</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-prompt">Desktop % </span><span class="terminal-command">cd hr-ai-projects</span></div>
+              <div class="terminal-line" data-delay="600"><span class="terminal-prompt">hr-ai-projects % </span><span class="terminal-command">echo "My first AI project notes" > notes.txt</span></div>
+              <div class="terminal-line" data-delay="1400"><span class="terminal-prompt">hr-ai-projects % </span><span class="terminal-command">cat notes.txt</span></div>
+              <div class="terminal-line" data-delay="2000"><span class="terminal-output">My first AI project notes</span></div>
+            </div>
+          </div>
+          <div class="callout">
+            <div class="callout-title">💡 What these commands do</div>
+            <p><strong>echo "text" > file.txt</strong> writes text into a file (creates it if it doesn't exist). <strong>cat</strong> displays the contents of a file. You just created and read a file without ever opening an app.</p>
+          </div>
+        `
+      },
+      {
+        title: "Install a Tool",
+        number: "Step 5 of 6",
+        content: `
+          <p>Most AI tools are installed through the terminal. Let's see how that works by checking if Python is installed — it's the language most AI tools are built with.</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Terminal</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-prompt">~ % </span><span class="terminal-command">python3 --version</span></div>
+              <div class="terminal-line" data-delay="800"><span class="terminal-output">Python 3.12.4</span></div>
+            </div>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">What just happened</div>
+            <p>You asked "Is Python installed, and which version?" If you see a version number, you're good. If you see "command not found," that's okay — it means you'd need to install it first (we'll cover that in the FAQ Bot track).</p>
+          </div>
+          <p>Now let's check one more useful tool — <strong>pip</strong>, which installs Python packages (like an app store for code):</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Terminal</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-prompt">~ % </span><span class="terminal-command">pip3 --version</span></div>
+              <div class="terminal-line" data-delay="800"><span class="terminal-output">pip 24.0 from /usr/lib/python3/dist-packages/pip</span></div>
+            </div>
+          </div>
+          <div class="callout warning">
+            <div class="callout-title">⚠️ Don't install anything yet</div>
+            <p>We're just checking what's already on your system. In the next tracks, we'll walk you through installing specific tools when you need them. No surprises.</p>
+          </div>
+          <div class="try-it">
+            <div class="try-it-label">✦ Your turn</div>
+            <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.75rem;">Run <strong>python3 --version</strong> in your terminal. What do you see?</p>
+            <textarea placeholder="I see: Python 3..."></textarea>
+          </div>
+        `
+      },
+      {
+        title: "You Did It",
+        number: "Step 6 of 6",
+        content: `
+          <div class="completion">
+            <div class="completion-icon">🌲</div>
+            <h2>You're a terminal user now.</h2>
+            <p>You opened the terminal, listed files, navigated folders, created a directory, made a file, and checked installed tools. That's not nothing — that's the foundation for everything else.</p>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">Commands you learned</div>
+            <p><strong>ls</strong> — list files in the current folder</p>
+            <p><strong>cd [folder]</strong> — move into a folder</p>
+            <p><strong>cd ..</strong> — go back up one level</p>
+            <p><strong>mkdir [name]</strong> — create a new folder</p>
+            <p><strong>echo "text" > file.txt</strong> — write text to a file</p>
+            <p><strong>cat [file]</strong> — display a file's contents</p>
+            <p><strong>python3 --version</strong> — check if a tool is installed</p>
+          </div>
+          <div class="callout">
+            <div class="callout-title">💡 What's next</div>
+            <p>Try the <strong>"Your First AI Prompt"</strong> track to learn how to write prompts that actually get useful results. Or jump to <strong>"Build an FAQ Bot"</strong> if you're feeling brave.</p>
+          </div>
+        `
+      }
+    ]
+  },
+
+  firstprompt: {
+    title: "Your First AI Prompt",
+    steps: [
+      {
+        title: "What Prompting Actually Is",
+        number: "Step 1 of 7",
+        content: `
+          <p>Prompting is just giving instructions to an AI tool. Think of it like writing a really clear email to a very fast, very literal intern. The better your instructions, the better the output.</p>
+          <p><strong>The three things that make a great prompt:</strong></p>
+          <p>1. <strong>Role</strong> — Tell the AI who it should be<br>
+          2. <strong>Task</strong> — Tell it exactly what you want<br>
+          3. <strong>Context</strong> — Give it the information it needs</p>
+          <div class="callout">
+            <div class="callout-title">💡 The intern analogy</div>
+            <p>If you told a new intern "Write something about PTO" — you'd get a mess. But if you said "You're helping me update our employee handbook. Write a clear, friendly PTO policy for a 50-person startup that offers unlimited PTO. Include how to request time off and the minimum notice period." — you'd get something useful. Same principle.</p>
+          </div>
+        `
+      },
+      {
+        title: "Your First Prompt",
+        number: "Step 2 of 7",
+        content: `
+          <p>Let's write a real prompt. Open <a href="https://claude.ai" target="_blank" style="color: var(--forest); font-weight: 500;">claude.ai</a> (or your AI tool of choice) and try this:</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Your prompt</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-command">You are an HR professional at a 50-person tech startup.</span></div>
+              <div class="terminal-line" data-delay="400"><span class="terminal-command">Write a warm, clear email to all employees announcing</span></div>
+              <div class="terminal-line" data-delay="800"><span class="terminal-command">that we're switching from Aetna to Blue Cross for</span></div>
+              <div class="terminal-line" data-delay="1200"><span class="terminal-command">health insurance, effective March 1.</span></div>
+              <div class="terminal-line" data-delay="1600"><span class="terminal-command"></span></div>
+              <div class="terminal-line" data-delay="2000"><span class="terminal-command">Key points to cover:</span></div>
+              <div class="terminal-line" data-delay="2200"><span class="terminal-command">- Why we're switching (better coverage, lower premiums)</span></div>
+              <div class="terminal-line" data-delay="2400"><span class="terminal-command">- What employees need to do (nothing — auto-enrolled)</span></div>
+              <div class="terminal-line" data-delay="2600"><span class="terminal-command">- Who to contact with questions (you, HR)</span></div>
+              <div class="terminal-line" data-delay="2800"><span class="terminal-command">- Tone: reassuring, not corporate</span></div>
+            </div>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">Why this works</div>
+            <p><strong>Role:</strong> "HR professional at a 50-person tech startup" — sets the voice and context.</p>
+            <p><strong>Task:</strong> "Write a warm, clear email" — specific format and tone.</p>
+            <p><strong>Context:</strong> The bullet points — gives it everything it needs. No guessing.</p>
+          </div>
+          <div class="try-it">
+            <div class="try-it-label">✦ Your turn — paste the prompt into Claude</div>
+            <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.75rem;">Try it now. Then rate the result: would you actually send this email? What would you change?</p>
+            <textarea placeholder="The result was... I would change..."></textarea>
+          </div>
+        `
+      },
+      {
+        title: "Make It Better with Follow-Ups",
+        number: "Step 3 of 7",
+        content: `
+          <p>Here's the secret most people miss: <strong>you don't need the perfect prompt on the first try.</strong> You can have a conversation. Ask for changes just like you would with a coworker.</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Follow-up prompts</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-command">Make it shorter — under 200 words.</span></div>
+              <div class="terminal-line" data-delay="800"><span class="terminal-output">✦ [Claude rewrites, shorter]</span></div>
+              <div class="terminal-line" data-delay="1600"><span class="terminal-command">Add a subject line that won't get ignored.</span></div>
+              <div class="terminal-line" data-delay="2400"><span class="terminal-output">✦ [Claude adds a punchy subject line]</span></div>
+              <div class="terminal-line" data-delay="3200"><span class="terminal-command">Now translate this to Spanish for our LATAM team.</span></div>
+              <div class="terminal-line" data-delay="4000"><span class="terminal-output">✦ [Claude translates]</span></div>
+            </div>
+          </div>
+          <div class="callout">
+            <div class="callout-title">💡 Think conversation, not magic spell</div>
+            <p>You don't need to get it right in one shot. The best results come from 2-3 rounds of "almost — but change this." Treat the AI like a drafting partner, not a vending machine.</p>
+          </div>
+        `
+      },
+      {
+        title: "The Role Trick",
+        number: "Step 4 of 7",
+        content: `
+          <p>Watch how the same task produces completely different results depending on the role you assign:</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Role comparison</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-comment"># Prompt A:</span></div>
+              <div class="terminal-line" data-delay="300"><span class="terminal-command">You are an employment lawyer. Review this PTO policy</span></div>
+              <div class="terminal-line" data-delay="600"><span class="terminal-command">for legal risks and compliance gaps.</span></div>
+              <div class="terminal-line" data-delay="1200"><span class="terminal-comment"># → Gets: formal, risk-focused analysis</span></div>
+              <div class="terminal-line" data-delay="2000"><span class="terminal-comment"># Prompt B:</span></div>
+              <div class="terminal-line" data-delay="2300"><span class="terminal-command">You are a startup HR director who cares deeply about</span></div>
+              <div class="terminal-line" data-delay="2600"><span class="terminal-command">employee experience. Review this PTO policy for</span></div>
+              <div class="terminal-line" data-delay="2900"><span class="terminal-command">clarity and fairness.</span></div>
+              <div class="terminal-line" data-delay="3500"><span class="terminal-comment"># → Gets: empathetic, practical suggestions</span></div>
+            </div>
+          </div>
+          <p>Same document, completely different feedback. The role frames everything.</p>
+          <div class="try-it">
+            <div class="try-it-label">✦ Your turn</div>
+            <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.75rem;">Pick an HR document you have (a policy, an email draft, a JD). Run it through Claude twice with two different roles. What changed?</p>
+            <textarea placeholder="Role 1: ... got me...\nRole 2: ... got me..."></textarea>
+          </div>
+        `
+      },
+      {
+        title: "Templates That Save Hours",
+        number: "Step 5 of 7",
+        content: `
+          <p>Once you find a prompt that works, save it as a template. Here are four you can start using today:</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Template 1: Simplify a policy</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-command">You are an HR communications specialist. Take this</span></div>
+              <div class="terminal-line" data-delay="300"><span class="terminal-command">policy and rewrite it at an 8th-grade reading level.</span></div>
+              <div class="terminal-line" data-delay="600"><span class="terminal-command">Keep all the important details but cut the legalese.</span></div>
+              <div class="terminal-line" data-delay="900"><span class="terminal-command">Format with headers and bullet points.</span></div>
+              <div class="terminal-line" data-delay="1200"><span class="terminal-command"></span></div>
+              <div class="terminal-line" data-delay="1400"><span class="terminal-command">[Paste your policy here]</span></div>
+            </div>
+          </div>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Template 2: Interview questions</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-command">You are a talent acquisition expert. Generate 8</span></div>
+              <div class="terminal-line" data-delay="300"><span class="terminal-command">behavioral interview questions for a [role title].</span></div>
+              <div class="terminal-line" data-delay="600"><span class="terminal-command">Focus on: [2-3 key competencies].</span></div>
+              <div class="terminal-line" data-delay="900"><span class="terminal-command">Include follow-up probes and what a strong answer</span></div>
+              <div class="terminal-line" data-delay="1200"><span class="terminal-command">looks like for each question.</span></div>
+            </div>
+          </div>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Template 3: Difficult conversation prep</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-command">You are an HR coach. Help me prepare for a difficult</span></div>
+              <div class="terminal-line" data-delay="300"><span class="terminal-command">conversation with an employee about [topic].</span></div>
+              <div class="terminal-line" data-delay="600"><span class="terminal-command">Give me: an opening line, 3 key talking points,</span></div>
+              <div class="terminal-line" data-delay="900"><span class="terminal-command">responses to likely pushback, and a closing that</span></div>
+              <div class="terminal-line" data-delay="1200"><span class="terminal-command">preserves the relationship.</span></div>
+            </div>
+          </div>
+          <div class="callout">
+            <div class="callout-title">💡 Save these somewhere</div>
+            <p>Create a "Prompt Library" doc on your desktop. Every time a prompt works well, drop it in. In a month you'll have a toolkit that saves you hours every week.</p>
+          </div>
+        `
+      },
+      {
+        title: "What Never to Share",
+        number: "Step 6 of 7",
+        content: `
+          <p>Before you start using AI for real work, you need to know the one unbreakable rule:</p>
+          <div class="callout warning">
+            <div class="callout-title">⚠️ Never paste real employee data into AI tools</div>
+            <p>No names, no SSNs, no salaries, no performance reviews with real names, no medical information. Not even in Claude. If it identifies a specific person, it doesn't go in.</p>
+          </div>
+          <p><strong>What's safe:</strong></p>
+          <p>✅ Generic policy text<br>
+          ✅ Job descriptions (no internal salary bands)<br>
+          ✅ Email drafts about general topics<br>
+          ✅ Interview questions<br>
+          ✅ Anonymized data ("Employee A has been late 5 times")</p>
+          <p><strong>What's not safe:</strong></p>
+          <p>❌ "Review John Smith's performance data"<br>
+          ❌ Pasting a spreadsheet with names and salaries<br>
+          ❌ Medical accommodation details<br>
+          ❌ Internal investigation notes<br>
+          ❌ Anything you wouldn't email to a stranger</p>
+          <div class="explainer">
+            <div class="explainer-label">The simple test</div>
+            <p>Before pasting anything, ask: <strong>"Would I be comfortable if this showed up in a news article?"</strong> If no — anonymize it first or don't use it.</p>
+          </div>
+        `
+      },
+      {
+        title: "You're Ready",
+        number: "Step 7 of 7",
+        content: `
+          <div class="completion">
+            <div class="completion-icon">✨</div>
+            <h2>You can prompt like a pro now.</h2>
+            <p>You know the Role-Task-Context framework, you know how to iterate, you've got templates ready to use, and you know what data to keep away from AI tools.</p>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">What you learned</div>
+            <p><strong>Role + Task + Context</strong> = great prompts every time</p>
+            <p><strong>Follow-up prompts</strong> are where the magic happens</p>
+            <p><strong>Roles change everything</strong> — same task, different expert, different result</p>
+            <p><strong>Save your best prompts</strong> in a library you can reuse</p>
+            <p><strong>Never share identifiable employee data</strong> with AI tools</p>
+          </div>
+          <div class="callout">
+            <div class="callout-title">💡 Ready for more?</div>
+            <p>Try the <strong>"Rewrite a Job Description"</strong> track to put your new prompting skills to work on a real HR task. Or jump to <strong>"Build an FAQ Bot"</strong> to see how prompts become actual tools.</p>
+          </div>
+        `
+      }
+    ]
+  },
+
+  faqbot: {
+    title: "Build an FAQ Bot",
+    steps: [
+      {
+        title: "What We're Building",
+        number: "Step 1 of 8",
+        content: `
+          <p>By the end of this track, you'll have the blueprint for a Slack bot that answers employee questions about PTO, benefits, and company policies — so you don't have to answer the same question for the 47th time.</p>
+          <p><strong>What you'll learn:</strong></p>
+          <p>• How to organize your company's knowledge base for AI<br>
+          • How to write a system prompt that keeps the bot on-topic<br>
+          • The basic architecture of a bot (it's simpler than you think)<br>
+          • What you can do yourself vs. what you'd need a developer for</p>
+          <div class="callout">
+            <div class="callout-title">💡 Heads up</div>
+            <p>Building the actual bot requires some Python code and API keys. This track walks you through the thinking and setup. If you have a developer on your team, you can hand them the output of this track and they'll have everything they need. If you want to try building it yourself, we'll show you how.</p>
+          </div>
+        `
+      },
+      {
+        title: "Gather Your Knowledge Base",
+        number: "Step 2 of 8",
+        content: `
+          <p>The bot is only as good as the information you feed it. Start by collecting the documents employees actually ask about:</p>
+          <div class="explainer">
+            <div class="explainer-label">Your knowledge base checklist</div>
+            <p>☐ PTO / Time Off policy</p>
+            <p>☐ Benefits summary (health, dental, vision, 401k)</p>
+            <p>☐ Remote work / WFH policy</p>
+            <p>☐ Expense reimbursement process</p>
+            <p>☐ Parental leave policy</p>
+            <p>☐ Holiday calendar</p>
+            <p>☐ Onboarding checklist (for "Where do I find X?" questions)</p>
+            <p>☐ IT helpdesk FAQ (password resets, equipment requests)</p>
+          </div>
+          <p>Now comes the critical step: <strong>format each document as plain text.</strong> AI tools work best with clean text, not PDFs full of formatting.</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Example: knowledge base structure</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-output">knowledge-base/</span></div>
+              <div class="terminal-line" data-delay="300"><span class="terminal-output">├── pto-policy.txt</span></div>
+              <div class="terminal-line" data-delay="500"><span class="terminal-output">├── benefits-summary.txt</span></div>
+              <div class="terminal-line" data-delay="700"><span class="terminal-output">├── remote-work-policy.txt</span></div>
+              <div class="terminal-line" data-delay="900"><span class="terminal-output">├── expense-process.txt</span></div>
+              <div class="terminal-line" data-delay="1100"><span class="terminal-output">├── parental-leave.txt</span></div>
+              <div class="terminal-line" data-delay="1300"><span class="terminal-output">└── holiday-calendar.txt</span></div>
+            </div>
+          </div>
+          <div class="try-it">
+            <div class="try-it-label">✦ Your turn</div>
+            <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.75rem;">List the top 5 questions employees ask you every week. These become your bot's first priority:</p>
+            <textarea placeholder="1. How much PTO do I have left?\n2. How do I submit an expense report?\n3. ..."></textarea>
+          </div>
+        `
+      },
+      {
+        title: "Write the System Prompt",
+        number: "Step 3 of 8",
+        content: `
+          <p>The system prompt is the brain of your bot. It tells the AI who it is, what it knows, and — critically — what it should do when it <em>doesn't</em> know something.</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">System prompt for your FAQ bot</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-command">You are a helpful HR assistant for [Company Name].</span></div>
+              <div class="terminal-line" data-delay="300"><span class="terminal-command">You answer employee questions about company policies,</span></div>
+              <div class="terminal-line" data-delay="600"><span class="terminal-command">benefits, PTO, and workplace procedures.</span></div>
+              <div class="terminal-line" data-delay="900"><span class="terminal-command"></span></div>
+              <div class="terminal-line" data-delay="1000"><span class="terminal-command">Rules:</span></div>
+              <div class="terminal-line" data-delay="1200"><span class="terminal-command">- Only answer based on the provided knowledge base</span></div>
+              <div class="terminal-line" data-delay="1400"><span class="terminal-command">- If you don't know the answer, say "I'm not sure</span></div>
+              <div class="terminal-line" data-delay="1600"><span class="terminal-command">  about that — please reach out to hr@company.com"</span></div>
+              <div class="terminal-line" data-delay="1800"><span class="terminal-command">- Never make up policies or numbers</span></div>
+              <div class="terminal-line" data-delay="2000"><span class="terminal-command">- Never discuss individual employee situations</span></div>
+              <div class="terminal-line" data-delay="2200"><span class="terminal-command">- Be warm and friendly, not corporate</span></div>
+              <div class="terminal-line" data-delay="2400"><span class="terminal-command">- Keep answers concise — under 150 words</span></div>
+            </div>
+          </div>
+          <div class="callout warning">
+            <div class="callout-title">⚠️ The "never make things up" rule is critical</div>
+            <p>AI will confidently invent policies if you don't tell it not to. The line "Only answer based on the provided knowledge base" is the single most important instruction in this prompt.</p>
+          </div>
+        `
+      },
+      {
+        title: "Test It Manually First",
+        number: "Step 4 of 8",
+        content: `
+          <p>Before writing any code, test your system prompt in Claude directly. Paste the system prompt and knowledge base, then ask it questions as if you were an employee.</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Testing in Claude</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-comment"># Paste your system prompt + knowledge base, then ask:</span></div>
+              <div class="terminal-line" data-delay="600"><span class="terminal-command">How many PTO days do I get per year?</span></div>
+              <div class="terminal-line" data-delay="1200"><span class="terminal-output">✦ [Should answer from your policy]</span></div>
+              <div class="terminal-line" data-delay="2000"><span class="terminal-command">What's the CEO's salary?</span></div>
+              <div class="terminal-line" data-delay="2600"><span class="terminal-output">✦ [Should decline — not in knowledge base]</span></div>
+              <div class="terminal-line" data-delay="3400"><span class="terminal-command">Can I bring my dog to the office?</span></div>
+              <div class="terminal-line" data-delay="4000"><span class="terminal-output">✦ [Should answer if in policy, or redirect to HR]</span></div>
+            </div>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">What to look for</div>
+            <p><strong>Accuracy:</strong> Does it quote your actual policy, or make stuff up?</p>
+            <p><strong>Boundaries:</strong> Does it refuse questions outside its knowledge?</p>
+            <p><strong>Tone:</strong> Does it sound like a helpful coworker, not a robot?</p>
+            <p><strong>Conciseness:</strong> Is it under 150 words, or writing essays?</p>
+          </div>
+          <div class="try-it">
+            <div class="try-it-label">✦ Your turn</div>
+            <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.75rem;">Open Claude, paste your system prompt and one of your policy documents. Ask 5 questions. Note what worked and what needs tweaking:</p>
+            <textarea placeholder="Q1: ... Answer was: ... (accurate / inaccurate / too long)\nQ2: ..."></textarea>
+          </div>
+        `
+      },
+      {
+        title: "The Architecture (Simple Version)",
+        number: "Step 5 of 8",
+        content: `
+          <p>Here's how the bot works, in non-technical terms:</p>
+          <div class="explainer">
+            <div class="explainer-label">How the pieces fit together</div>
+            <p><strong>1. Employee types a question</strong> in a Slack channel</p>
+            <p><strong>2. Slack sends the question</strong> to your bot (a small Python script running on a server)</p>
+            <p><strong>3. Your bot sends it to Claude</strong> along with the system prompt + knowledge base</p>
+            <p><strong>4. Claude sends back an answer</strong></p>
+            <p><strong>5. Your bot posts the answer</strong> back in Slack</p>
+          </div>
+          <p>That's it. Five steps. The "bot" is really just a middleman that passes messages between Slack and Claude.</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">The flow</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-output">Employee → Slack → Your Bot → Claude API → Your Bot → Slack → Employee</span></div>
+              <div class="terminal-line" data-delay="1000"><span class="terminal-comment"></span></div>
+              <div class="terminal-line" data-delay="1200"><span class="terminal-comment"># What you need:</span></div>
+              <div class="terminal-line" data-delay="1500"><span class="terminal-output">• A Slack workspace (you have this)</span></div>
+              <div class="terminal-line" data-delay="1800"><span class="terminal-output">• A Claude API key ($5-20/month for typical HR use)</span></div>
+              <div class="terminal-line" data-delay="2100"><span class="terminal-output">• A small Python script (we'll give you this)</span></div>
+              <div class="terminal-line" data-delay="2400"><span class="terminal-output">• Somewhere to run it (Heroku, Railway, or your IT team's server)</span></div>
+            </div>
+          </div>
+          <div class="callout">
+            <div class="callout-title">💡 Cost reality check</div>
+            <p>For a 50-person company, expect $5-20/month in API costs. Each question costs about $0.01-0.03. That's less than the coffee you drink while answering the same PTO question for the fifth time this week.</p>
+          </div>
+        `
+      },
+      {
+        title: "The Code (For Your Developer)",
+        number: "Step 6 of 8",
+        content: `
+          <p>Here's the actual Python code that powers the bot. If you're not a coder, that's fine — <strong>copy this entire section and send it to your developer.</strong> They'll know what to do.</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">faq_bot.py</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-command">import anthropic</span></div>
+              <div class="terminal-line" data-delay="200"><span class="terminal-command">from slack_bolt import App</span></div>
+              <div class="terminal-line" data-delay="400"><span class="terminal-command">from pathlib import Path</span></div>
+              <div class="terminal-line" data-delay="600"><span class="terminal-command"></span></div>
+              <div class="terminal-line" data-delay="700"><span class="terminal-comment"># Load knowledge base</span></div>
+              <div class="terminal-line" data-delay="900"><span class="terminal-command">knowledge = ""</span></div>
+              <div class="terminal-line" data-delay="1000"><span class="terminal-command">for f in Path("knowledge-base").glob("*.txt"):</span></div>
+              <div class="terminal-line" data-delay="1100"><span class="terminal-command">    knowledge += f.read_text() + "\\n\\n"</span></div>
+              <div class="terminal-line" data-delay="1300"><span class="terminal-command"></span></div>
+              <div class="terminal-line" data-delay="1400"><span class="terminal-comment"># Your system prompt goes here</span></div>
+              <div class="terminal-line" data-delay="1600"><span class="terminal-command">SYSTEM = f"""You are a helpful HR assistant...</span></div>
+              <div class="terminal-line" data-delay="1800"><span class="terminal-command">Knowledge base:\\n{knowledge}"""</span></div>
+              <div class="terminal-line" data-delay="2000"><span class="terminal-command"></span></div>
+              <div class="terminal-line" data-delay="2100"><span class="terminal-comment"># Answer questions</span></div>
+              <div class="terminal-line" data-delay="2300"><span class="terminal-command">client = anthropic.Anthropic()</span></div>
+              <div class="terminal-line" data-delay="2500"><span class="terminal-command">app = App()</span></div>
+              <div class="terminal-line" data-delay="2700"><span class="terminal-command"></span></div>
+              <div class="terminal-line" data-delay="2800"><span class="terminal-command">@app.message("")</span></div>
+              <div class="terminal-line" data-delay="2900"><span class="terminal-command">def handle(message, say):</span></div>
+              <div class="terminal-line" data-delay="3000"><span class="terminal-command">    resp = client.messages.create(</span></div>
+              <div class="terminal-line" data-delay="3100"><span class="terminal-command">        model="claude-sonnet-4-6",</span></div>
+              <div class="terminal-line" data-delay="3200"><span class="terminal-command">        system=SYSTEM,</span></div>
+              <div class="terminal-line" data-delay="3300"><span class="terminal-command">        messages=[{"role":"user",</span></div>
+              <div class="terminal-line" data-delay="3400"><span class="terminal-command">                   "content": message["text"]}],</span></div>
+              <div class="terminal-line" data-delay="3500"><span class="terminal-command">        max_tokens=300</span></div>
+              <div class="terminal-line" data-delay="3600"><span class="terminal-command">    )</span></div>
+              <div class="terminal-line" data-delay="3700"><span class="terminal-command">    say(resp.content[0].text)</span></div>
+            </div>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">What each part does</div>
+            <p><strong>Lines 1-3:</strong> Import the tools we need (Claude SDK + Slack SDK)</p>
+            <p><strong>Lines 5-7:</strong> Read all your policy documents into memory</p>
+            <p><strong>Lines 9-10:</strong> Combine your system prompt with the knowledge base</p>
+            <p><strong>Lines 12-20:</strong> When someone sends a message, pass it to Claude and post the answer</p>
+          </div>
+        `
+      },
+      {
+        title: "Roll It Out Safely",
+        number: "Step 7 of 8",
+        content: `
+          <p>Don't launch to the whole company on day one. Here's the rollout plan that actually works:</p>
+          <div class="explainer">
+            <div class="explainer-label">Week 1: Just you</div>
+            <p>Test the bot yourself in a private Slack channel. Ask every question you can think of. Break it on purpose. Ask it things it shouldn't answer. Fix the system prompt until it's solid.</p>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">Week 2: HR team + 3-5 trusted employees</div>
+            <p>Add a few people who will give honest feedback. Ask them to try to stump it. Collect every question it gets wrong and update the knowledge base.</p>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">Week 3: Full company launch</div>
+            <p>Create a #ask-hr-bot channel. Post an announcement: "Meet your new HR assistant! It can answer questions about PTO, benefits, expenses, and more. If it doesn't know the answer, it'll point you to the right person."</p>
+          </div>
+          <div class="callout">
+            <div class="callout-title">💡 Set expectations</div>
+            <p>Always position the bot as an assistant, not a replacement. "It handles the routine questions so your HR team can focus on the important stuff" — this framing makes everyone comfortable.</p>
+          </div>
+        `
+      },
+      {
+        title: "You Built a Bot Plan",
+        number: "Step 8 of 8",
+        content: `
+          <div class="completion">
+            <div class="completion-icon">🤖</div>
+            <h2>Your FAQ bot blueprint is ready.</h2>
+            <p>You've got the knowledge base checklist, the system prompt, the architecture, the code, and the rollout plan. Hand this to a developer and you're two afternoons away from never answering "How much PTO do I have?" again.</p>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">What you have now</div>
+            <p>✅ Knowledge base structure and checklist</p>
+            <p>✅ Battle-tested system prompt</p>
+            <p>✅ Understanding of the architecture</p>
+            <p>✅ Working code to hand to a developer</p>
+            <p>✅ Three-week rollout plan</p>
+          </div>
+        `
+      }
+    ]
+  },
+
+  policy: {
+    title: "Draft an AI Policy",
+    steps: [
+      {
+        title: "Why You're the Right Person for This",
+        number: "Step 1 of 5",
+        content: `
+          <p>Most companies don't have an AI usage policy yet. The ones that do usually got it from Legal — and it's a 30-page doc that nobody reads. <strong>You can do better.</strong></p>
+          <p>As the HR person, you understand how people actually work. You know what tools they're already using, what data is sensitive, and how to write things people will actually read.</p>
+          <div class="callout">
+            <div class="callout-title">💡 The goal</div>
+            <p>By the end of this track, you'll have a complete AI usage policy draft that you can present to your leadership team. And yes — we're going to use AI to help write it.</p>
+          </div>
+        `
+      },
+      {
+        title: "Start with the Framework",
+        number: "Step 2 of 5",
+        content: `
+          <p>Every good AI policy answers five questions. Let's use Claude to draft each section:</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Prompt: Generate policy framework</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-command">You are an HR policy specialist at a [size]-person</span></div>
+              <div class="terminal-line" data-delay="300"><span class="terminal-command">[industry] company. Draft a practical AI usage policy</span></div>
+              <div class="terminal-line" data-delay="600"><span class="terminal-command">that covers these five areas:</span></div>
+              <div class="terminal-line" data-delay="900"><span class="terminal-command"></span></div>
+              <div class="terminal-line" data-delay="1000"><span class="terminal-command">1. Which AI tools are approved for use</span></div>
+              <div class="terminal-line" data-delay="1200"><span class="terminal-command">2. What data can and cannot be shared with AI tools</span></div>
+              <div class="terminal-line" data-delay="1400"><span class="terminal-command">3. Required disclosure when AI is used in work output</span></div>
+              <div class="terminal-line" data-delay="1600"><span class="terminal-command">4. Prohibited uses</span></div>
+              <div class="terminal-line" data-delay="1800"><span class="terminal-command">5. What to do if something goes wrong</span></div>
+              <div class="terminal-line" data-delay="2000"><span class="terminal-command"></span></div>
+              <div class="terminal-line" data-delay="2100"><span class="terminal-command">Write it in plain English. Maximum 2 pages.</span></div>
+              <div class="terminal-line" data-delay="2300"><span class="terminal-command">No legalese. Someone should be able to read and</span></div>
+              <div class="terminal-line" data-delay="2500"><span class="terminal-command">understand this in 5 minutes.</span></div>
+            </div>
+          </div>
+          <div class="try-it">
+            <div class="try-it-label">✦ Your turn</div>
+            <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.75rem;">Fill in your company details and run this prompt. Paste the result below and note what needs changing:</p>
+            <textarea placeholder="Company size: ...\nIndustry: ...\nResult quality: ...\nNeeds changing: ..."></textarea>
+          </div>
+        `
+      },
+      {
+        title: "Customize the Data Rules",
+        number: "Step 3 of 5",
+        content: `
+          <p>The data section is the most important part. Let's make it specific to your company:</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Prompt: Data classification table</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-command">Create a simple 3-tier data classification table</span></div>
+              <div class="terminal-line" data-delay="300"><span class="terminal-command">for AI tool usage at a [industry] company:</span></div>
+              <div class="terminal-line" data-delay="600"><span class="terminal-command"></span></div>
+              <div class="terminal-line" data-delay="700"><span class="terminal-command">🟢 GREEN — Safe to use with AI tools</span></div>
+              <div class="terminal-line" data-delay="900"><span class="terminal-command">🟡 YELLOW — Use with caution (anonymize first)</span></div>
+              <div class="terminal-line" data-delay="1100"><span class="terminal-command">🔴 RED — Never share with AI tools</span></div>
+              <div class="terminal-line" data-delay="1300"><span class="terminal-command"></span></div>
+              <div class="terminal-line" data-delay="1400"><span class="terminal-command">Include 5+ specific examples per tier that are</span></div>
+              <div class="terminal-line" data-delay="1600"><span class="terminal-command">relevant to HR, finance, engineering, and sales.</span></div>
+              <div class="terminal-line" data-delay="1800"><span class="terminal-command">Format as a table.</span></div>
+            </div>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">Why the traffic light system works</div>
+            <p>Employees don't have time to read a decision tree. Green/yellow/red is instant. They can tape it to their monitor. When in doubt, they check the chart.</p>
+          </div>
+        `
+      },
+      {
+        title: "Add the Human Touches",
+        number: "Step 4 of 5",
+        content: `
+          <p>Claude gave you a solid draft. Now make it yours. The parts AI can't write for you:</p>
+          <div class="explainer">
+            <div class="explainer-label">Add these by hand</div>
+            <p><strong>Your approved tools list</strong> — Name the specific tools your company has vetted (e.g., "Claude Team plan, Notion AI, GitHub Copilot")</p>
+            <p><strong>Your HR contact</strong> — Who should people email with questions? Put a real name and email.</p>
+            <p><strong>Your incident example</strong> — "If you accidentally paste sensitive data into an AI tool, immediately [your specific steps]"</p>
+            <p><strong>Your review date</strong> — "This policy will be reviewed and updated by [date]." AI moves fast; policies should too.</p>
+          </div>
+          <div class="callout">
+            <div class="callout-title">💡 The 80/20 rule</div>
+            <p>AI wrote 80% of this policy in minutes. The 20% you add by hand is what makes it real, specific, and trustworthy. That's the right way to use AI — let it do the heavy lifting, then add the human judgment.</p>
+          </div>
+          <div class="try-it">
+            <div class="try-it-label">✦ Your turn</div>
+            <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.75rem;">Open your draft and fill in the company-specific details. List the approved tools at your company:</p>
+            <textarea placeholder="Approved tools:\n1. ...\n2. ...\n\nHR contact for questions: ..."></textarea>
+          </div>
+        `
+      },
+      {
+        title: "Present It to Leadership",
+        number: "Step 5 of 5",
+        content: `
+          <div class="completion">
+            <div class="completion-icon">📋</div>
+            <h2>Your AI policy is ready to present.</h2>
+            <p>You just did something most companies haven't done yet. You have a clear, readable AI usage policy that protects the company and empowers employees to use AI tools safely.</p>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">How to pitch it to leadership</div>
+            <p><strong>Open with:</strong> "Employees are already using AI tools. We need clear guardrails. Here's a practical policy I've drafted."</p>
+            <p><strong>Emphasize:</strong> It's 2 pages, not 30. People will actually read it.</p>
+            <p><strong>Show the data classification:</strong> The traffic light chart gets instant buy-in from leadership.</p>
+            <p><strong>Propose:</strong> Roll out with a 30-minute all-hands training session. Offer to run it yourself.</p>
+            <p><strong>Close with:</strong> "This isn't about restricting AI — it's about using it responsibly so we stay ahead."</p>
+          </div>
+        `
+      }
+    ]
+  },
+
+  jd: {
+    title: "Rewrite a Job Description",
+    steps: [
+      {
+        title: "Why Most JDs Are Terrible",
+        number: "Step 1 of 6",
+        content: `
+          <p>Studies show that women apply to jobs when they meet 100% of the requirements. Men apply at 60%. If your JD has 15 "requirements" and half of them are nice-to-haves disguised as must-haves, you're filtering out great candidates.</p>
+          <p><strong>Common JD problems:</strong></p>
+          <p>• "10+ years of experience" for a mid-level role<br>
+          • "Must be a self-starter who thrives in ambiguity" (what does this even mean?)<br>
+          • Gendered language: "aggressive," "dominant," "rockstar"<br>
+          • Burying the salary range (or not including one)<br>
+          • All requirements, zero selling — why would someone <em>want</em> this job?</p>
+          <div class="callout">
+            <div class="callout-title">💡 The good news</div>
+            <p>AI is incredibly good at this specific task. It can spot bias, suggest inclusive alternatives, and rewrite the whole thing in minutes. Let's do it.</p>
+          </div>
+        `
+      },
+      {
+        title: "Audit an Existing JD",
+        number: "Step 2 of 6",
+        content: `
+          <p>Grab a job description your company has posted (or is about to post). We'll run it through Claude for a bias and quality audit.</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Prompt: JD Audit</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-command">You are a talent acquisition expert specializing in</span></div>
+              <div class="terminal-line" data-delay="300"><span class="terminal-command">inclusive hiring. Audit this job description for:</span></div>
+              <div class="terminal-line" data-delay="600"><span class="terminal-command"></span></div>
+              <div class="terminal-line" data-delay="700"><span class="terminal-command">1. Gendered language (flag specific words)</span></div>
+              <div class="terminal-line" data-delay="900"><span class="terminal-command">2. Unnecessary requirements (nice-to-haves listed</span></div>
+              <div class="terminal-line" data-delay="1100"><span class="terminal-command">   as must-haves)</span></div>
+              <div class="terminal-line" data-delay="1300"><span class="terminal-command">3. Ableist assumptions</span></div>
+              <div class="terminal-line" data-delay="1500"><span class="terminal-command">4. Missing information candidates need</span></div>
+              <div class="terminal-line" data-delay="1700"><span class="terminal-command">5. Overall readability and appeal</span></div>
+              <div class="terminal-line" data-delay="1900"><span class="terminal-command"></span></div>
+              <div class="terminal-line" data-delay="2000"><span class="terminal-command">For each issue, explain why it's a problem and</span></div>
+              <div class="terminal-line" data-delay="2200"><span class="terminal-command">suggest a specific fix.</span></div>
+              <div class="terminal-line" data-delay="2400"><span class="terminal-command"></span></div>
+              <div class="terminal-line" data-delay="2500"><span class="terminal-command">[Paste your JD here]</span></div>
+            </div>
+          </div>
+          <div class="try-it">
+            <div class="try-it-label">✦ Your turn</div>
+            <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.75rem;">Paste a JD into Claude with this prompt. How many issues did it find?</p>
+            <textarea placeholder="Issues found: ...\nMost surprising one: ..."></textarea>
+          </div>
+        `
+      },
+      {
+        title: "The Rewrite",
+        number: "Step 3 of 6",
+        content: `
+          <p>Now let's rewrite it completely:</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Prompt: Full JD rewrite</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-command">Rewrite this job description with these rules:</span></div>
+              <div class="terminal-line" data-delay="300"><span class="terminal-command"></span></div>
+              <div class="terminal-line" data-delay="400"><span class="terminal-command">- Start with what the person will DO, not who they ARE</span></div>
+              <div class="terminal-line" data-delay="600"><span class="terminal-command">- Maximum 5 true requirements (must-haves only)</span></div>
+              <div class="terminal-line" data-delay="800"><span class="terminal-command">- Separate nice-to-haves into their own section</span></div>
+              <div class="terminal-line" data-delay="1000"><span class="terminal-command">- Remove all gendered language</span></div>
+              <div class="terminal-line" data-delay="1200"><span class="terminal-command">- Add a "What you'll get" section that sells the role</span></div>
+              <div class="terminal-line" data-delay="1400"><span class="terminal-command">- Include salary range: [your range]</span></div>
+              <div class="terminal-line" data-delay="1600"><span class="terminal-command">- Keep it under 500 words</span></div>
+              <div class="terminal-line" data-delay="1800"><span class="terminal-command">- Tone: confident and warm, not corporate</span></div>
+            </div>
+          </div>
+          <div class="callout">
+            <div class="callout-title">💡 The "what you'll do" flip</div>
+            <p>Instead of "The ideal candidate has 8+ years..." → "In this role, you'll lead a team of 5 and own our entire onboarding experience." Action-first writing attracts people who are excited about the work, not just checking boxes.</p>
+          </div>
+        `
+      },
+      {
+        title: "The Bias Check",
+        number: "Step 4 of 6",
+        content: `
+          <p>Even after rewriting, run one more pass specifically for bias:</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Prompt: Final bias check</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-command">Review this job description as a DEI specialist.</span></div>
+              <div class="terminal-line" data-delay="300"><span class="terminal-command">Flag any language that could discourage applications</span></div>
+              <div class="terminal-line" data-delay="600"><span class="terminal-command">from women, people of color, people with disabilities,</span></div>
+              <div class="terminal-line" data-delay="900"><span class="terminal-command">or people over 40. Be specific and suggest alternatives.</span></div>
+              <div class="terminal-line" data-delay="1200"><span class="terminal-command"></span></div>
+              <div class="terminal-line" data-delay="1300"><span class="terminal-command">Common red flags to check for:</span></div>
+              <div class="terminal-line" data-delay="1500"><span class="terminal-command">- "Digital native" (age bias)</span></div>
+              <div class="terminal-line" data-delay="1700"><span class="terminal-command">- "Fast-paced" without context (ableist assumption)</span></div>
+              <div class="terminal-line" data-delay="1900"><span class="terminal-command">- "Culture fit" (vague, often masks bias)</span></div>
+              <div class="terminal-line" data-delay="2100"><span class="terminal-command">- Excessive degree requirements</span></div>
+            </div>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">Words to watch</div>
+            <p><strong>Replace "rockstar/ninja/guru"</strong> → "experienced" or "skilled"</p>
+            <p><strong>Replace "young and energetic"</strong> → "motivated and engaged"</p>
+            <p><strong>Replace "must be able to lift 50 lbs"</strong> → only if actually essential to the role</p>
+            <p><strong>Replace "culture fit"</strong> → "culture add" (what new perspectives do they bring?)</p>
+          </div>
+        `
+      },
+      {
+        title: "Before & After",
+        number: "Step 5 of 6",
+        content: `
+          <p>Here's what the transformation typically looks like:</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">❌ Before</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-output">REQUIREMENTS:</span></div>
+              <div class="terminal-line" data-delay="200"><span class="terminal-output">- 7+ years HR experience</span></div>
+              <div class="terminal-line" data-delay="400"><span class="terminal-output">- Bachelor's degree required, Master's preferred</span></div>
+              <div class="terminal-line" data-delay="600"><span class="terminal-output">- Must be a self-starter who thrives in ambiguity</span></div>
+              <div class="terminal-line" data-delay="800"><span class="terminal-output">- Expert-level knowledge of all HRIS systems</span></div>
+              <div class="terminal-line" data-delay="1000"><span class="terminal-output">- Aggressive problem-solver with thick skin</span></div>
+            </div>
+          </div>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">✅ After</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span class="terminal-output">WHAT YOU'LL DO:</span></div>
+              <div class="terminal-line" data-delay="200"><span class="terminal-output">- Own onboarding for 30+ new hires per quarter</span></div>
+              <div class="terminal-line" data-delay="400"><span class="terminal-output">- Build and improve our People programs from scratch</span></div>
+              <div class="terminal-line" data-delay="600"><span class="terminal-output">- Partner with managers to handle sensitive situations</span></div>
+              <div class="terminal-line" data-delay="800"><span class="terminal-output"></span></div>
+              <div class="terminal-line" data-delay="900"><span class="terminal-output">WHAT YOU BRING:</span></div>
+              <div class="terminal-line" data-delay="1100"><span class="terminal-output">- 4+ years in an HR generalist or People Ops role</span></div>
+              <div class="terminal-line" data-delay="1300"><span class="terminal-output">- Experience with at least one HRIS (we use BambooHR)</span></div>
+              <div class="terminal-line" data-delay="1500"><span class="terminal-output">- You're someone people trust with hard conversations</span></div>
+              <div class="terminal-line" data-delay="1700"><span class="terminal-output"></span></div>
+              <div class="terminal-line" data-delay="1800"><span class="terminal-output">SALARY: $95,000 - $115,000 + equity</span></div>
+            </div>
+          </div>
+          <p>Night and day. The "after" tells you what the job actually is, has realistic requirements, and includes the salary. Which one would <em>you</em> apply to?</p>
+        `
+      },
+      {
+        title: "Your JD Toolkit",
+        number: "Step 6 of 6",
+        content: `
+          <div class="completion">
+            <div class="completion-icon">📝</div>
+            <h2>You'll never write a boring JD again.</h2>
+            <p>You now have three prompts — audit, rewrite, and bias check — that turn any job description into something candidates actually want to read.</p>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">Your three JD prompts</div>
+            <p><strong>Audit:</strong> Find what's wrong with an existing JD</p>
+            <p><strong>Rewrite:</strong> Transform it with clear rules (action-first, 5 requirements max, sell the role)</p>
+            <p><strong>Bias check:</strong> Final pass for gendered, ableist, or exclusionary language</p>
+          </div>
+          <div class="callout">
+            <div class="callout-title">💡 Pro move</div>
+            <p>Save these three prompts and run every JD through them before posting. It takes 5 minutes and will measurably improve your candidate pipeline diversity.</p>
+          </div>
+        `
+      }
+    ]
+  },
+
+  data: {
+    title: "Classify Your HR Data",
+    steps: [
+      {
+        title: "Why Data Classification Matters",
+        number: "Step 1 of 5",
+        content: `
+          <p>Before your team uses any AI tool, everyone needs to know what data is safe to share and what isn't. This isn't about fear — it's about confidence. When people know the rules, they use AI tools more, not less.</p>
+          <div class="callout">
+            <div class="callout-title">💡 The real risk</div>
+            <p>The biggest risk isn't a data breach. It's an employee pasting a spreadsheet of salaries into ChatGPT because nobody told them not to. A clear classification system prevents 95% of problems.</p>
+          </div>
+        `
+      },
+      {
+        title: "The Three Tiers",
+        number: "Step 2 of 5",
+        content: `
+          <p>We use a simple traffic light system. Let's build yours:</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Data Classification</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span style="color: #27C93F;">🟢 GREEN — Safe for AI tools</span></div>
+              <div class="terminal-line" data-delay="300"><span class="terminal-output">  • Public job descriptions</span></div>
+              <div class="terminal-line" data-delay="500"><span class="terminal-output">  • Published company policies</span></div>
+              <div class="terminal-line" data-delay="700"><span class="terminal-output">  • Generic email drafts</span></div>
+              <div class="terminal-line" data-delay="900"><span class="terminal-output">  • Interview question banks</span></div>
+              <div class="terminal-line" data-delay="1100"><span class="terminal-output">  • Training materials</span></div>
+              <div class="terminal-line" data-delay="1500"><span style="color: #FFBD2E;">🟡 YELLOW — Anonymize first</span></div>
+              <div class="terminal-line" data-delay="1700"><span class="terminal-output">  • Org charts (remove names)</span></div>
+              <div class="terminal-line" data-delay="1900"><span class="terminal-output">  • Turnover data (aggregate only)</span></div>
+              <div class="terminal-line" data-delay="2100"><span class="terminal-output">  • Engagement survey results (no comments)</span></div>
+              <div class="terminal-line" data-delay="2300"><span class="terminal-output">  • Performance trends (not individual reviews)</span></div>
+              <div class="terminal-line" data-delay="2700"><span style="color: #FF5F56;">🔴 RED — Never share with AI</span></div>
+              <div class="terminal-line" data-delay="2900"><span class="terminal-output">  • Employee names + any personal data</span></div>
+              <div class="terminal-line" data-delay="3100"><span class="terminal-output">  • SSNs, addresses, bank info</span></div>
+              <div class="terminal-line" data-delay="3300"><span class="terminal-output">  • Individual salaries or compensation data</span></div>
+              <div class="terminal-line" data-delay="3500"><span class="terminal-output">  • Medical / ADA accommodations</span></div>
+              <div class="terminal-line" data-delay="3700"><span class="terminal-output">  • Investigation notes, legal holds</span></div>
+              <div class="terminal-line" data-delay="3900"><span class="terminal-output">  • Individual performance reviews</span></div>
+            </div>
+          </div>
+        `
+      },
+      {
+        title: "The Anonymization Trick",
+        number: "Step 3 of 5",
+        content: `
+          <p>Yellow-tier data becomes green-tier when you anonymize it. Here's how:</p>
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">Before and after anonymization</span>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line" data-delay="0"><span style="color: #FF5F56;">❌ "Sarah Chen in Engineering is underperforming.</span></div>
+              <div class="terminal-line" data-delay="300"><span style="color: #FF5F56;">   She missed 3 deadlines and her manager wants</span></div>
+              <div class="terminal-line" data-delay="600"><span style="color: #FF5F56;">   to put her on a PIP."</span></div>
+              <div class="terminal-line" data-delay="1200"><span style="color: #27C93F;">✅ "An employee in a technical role is underperforming.</span></div>
+              <div class="terminal-line" data-delay="1500"><span style="color: #27C93F;">   They missed 3 deadlines and their manager wants</span></div>
+              <div class="terminal-line" data-delay="1800"><span style="color: #27C93F;">   to put them on a performance improvement plan."</span></div>
+            </div>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">Anonymization checklist</div>
+            <p>☐ Replace names with "Employee A" or generic terms</p>
+            <p>☐ Remove team/department names if the team is small (&lt;5 people)</p>
+            <p>☐ Use ranges instead of exact numbers ("$90-100K" instead of "$95,432")</p>
+            <p>☐ Remove dates if they could identify someone ("hired last month" → "recently hired")</p>
+            <p>☐ Strip email addresses, phone numbers, locations</p>
+          </div>
+          <div class="try-it">
+            <div class="try-it-label">✦ Practice anonymizing</div>
+            <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.75rem;">Take a real scenario from your work and anonymize it below. Could someone identify the person from what remains?</p>
+            <textarea placeholder="Original (don't type real names here): ...\nAnonymized version: ..."></textarea>
+          </div>
+        `
+      },
+      {
+        title: "Audit Your Current Tools",
+        number: "Step 4 of 5",
+        content: `
+          <p>Let's map what AI tools your team is already using and what data flows through them:</p>
+          <div class="try-it">
+            <div class="try-it-label">✦ Your AI tool audit</div>
+            <p style="font-size: 0.88rem; color: var(--text-light); margin-bottom: 0.75rem;">For each AI tool your team uses, note what data goes into it:</p>
+            <textarea placeholder="Tool 1: ChatGPT\n  Who uses it: Marketing, HR\n  What data: email drafts, social media copy\n  Risk level: 🟢 (no employee data)\n\nTool 2: ...\n  Who uses it: ...\n  What data: ...\n  Risk level: ..."></textarea>
+          </div>
+          <div class="callout">
+            <div class="callout-title">💡 You'll probably be surprised</div>
+            <p>Most HR teams find that employees are already using 2-3 AI tools informally. That's not bad — it means your team is resourceful. The goal isn't to stop them, it's to give them safe guardrails.</p>
+          </div>
+        `
+      },
+      {
+        title: "Your Data Map Is Done",
+        number: "Step 5 of 5",
+        content: `
+          <div class="completion">
+            <div class="completion-icon">🔒</div>
+            <h2>You know exactly what's safe.</h2>
+            <p>You've classified your HR data, learned how to anonymize sensitive information, and audited the AI tools your team uses. That's the foundation for everything else.</p>
+          </div>
+          <div class="explainer">
+            <div class="explainer-label">What you have now</div>
+            <p>✅ A three-tier classification system (green/yellow/red)</p>
+            <p>✅ Anonymization techniques for yellow-tier data</p>
+            <p>✅ An audit of your team's current AI tool usage</p>
+            <p>✅ The confidence to use AI tools without second-guessing</p>
+          </div>
+          <div class="callout">
+            <div class="callout-title">💡 Next step</div>
+            <p>Take your classification chart and share it with your team in your next meeting. Print the traffic light chart. Make it visible. Try the <strong>"Draft an AI Policy"</strong> track to formalize these rules into an official policy.</p>
+          </div>
+        `
+      }
+    ]
+  }
+};
+
+// ===== ENGINE =====
+let currentTrack = null;
+let currentStep = 0;
+
+function loadTrack(trackId) {
+  currentTrack = tracks[trackId];
+  currentStep = 0;
+
+  document.getElementById('walkthrough-title').textContent = currentTrack.title;
+  document.querySelector('.tracks-section').style.display = 'none';
+  document.querySelector('.walkthrough-section').classList.add('visible');
+
+  buildStepList();
+  showStep(0);
+
+  document.getElementById('walkthrough').scrollIntoView({ behavior: 'smooth' });
+}
+
+function closeTrack() {
+  document.querySelector('.walkthrough-section').classList.remove('visible');
+  document.querySelector('.tracks-section').style.display = '';
+  document.getElementById('tracks').scrollIntoView({ behavior: 'smooth' });
+  currentTrack = null;
+  currentStep = 0;
+}
+
+function buildStepList() {
+  const list = document.getElementById('step-list');
+  list.innerHTML = '';
+  currentTrack.steps.forEach((step, i) => {
+    const li = document.createElement('li');
+    li.innerHTML = `<span class="step-dot"></span>${step.title}`;
+    li.onclick = () => showStep(i);
+    list.appendChild(li);
+  });
+}
+
+function showStep(index) {
+  currentStep = index;
+  const step = currentTrack.steps[index];
+  const total = currentTrack.steps.length;
+
+  // Update content
+  const content = document.getElementById('step-content');
+  content.innerHTML = `
+    <div class="step-panel active">
+      <div class="step-number">${step.number}</div>
+      <h2>${step.title}</h2>
+      ${step.content}
+    </div>
+  `;
+
+  // Update step list
+  document.querySelectorAll('.step-list li').forEach((li, i) => {
+    li.className = i < index ? 'completed' : i === index ? 'active' : '';
+  });
+
+  // Update progress
+  const progress = ((index + 1) / total) * 100;
+  document.getElementById('progress-fill').style.width = progress + '%';
+
+  // Update buttons
+  document.getElementById('prev-btn').disabled = index === 0;
+  const nextBtn = document.getElementById('next-btn');
+  if (index === total - 1) {
+    nextBtn.textContent = '✦ Complete Track';
+    nextBtn.onclick = closeTrack;
+  } else {
+    nextBtn.textContent = 'Next Step →';
+    nextBtn.onclick = nextStep;
+  }
+
+  // Animate terminal lines
+  animateTerminalLines();
+
+  // Scroll to top of content
+  content.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function nextStep() {
+  if (currentStep < currentTrack.steps.length - 1) {
+    showStep(currentStep + 1);
+  }
+}
+
+function prevStep() {
+  if (currentStep > 0) {
+    showStep(currentStep - 1);
+  }
+}
+
+function animateTerminalLines() {
+  document.querySelectorAll('.terminal-line').forEach(line => {
+    const delay = parseInt(line.dataset.delay) || 0;
+    setTimeout(() => {
+      line.classList.add('visible');
+    }, delay);
+  });
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (!currentTrack) return;
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+    e.preventDefault();
+    nextStep();
+  }
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    prevStep();
+  }
+  if (e.key === 'Escape') {
+    closeTrack();
+  }
+});
+</script>
+</body>
+</html>

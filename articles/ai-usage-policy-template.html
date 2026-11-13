@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Company Needs an AI Usage Policy. Here's a Template. — AI for HR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #2D4A3E;
+  --deep-forest: #1B3129;
+  --sage: #7A9E8E;
+  --mist: #B8CFC4;
+  --fog: #E8EDE9;
+  --cream: #F7F5F0;
+  --warm-white: #FDFCF9;
+  --bark: #5C4A3A;
+  --gold: #C4A96A;
+  --text: #2A2A28;
+  --text-light: #6B6B65;
+  --text-muted: #9B9B93;
+  --display: 'Fraunces', serif;
+  --body: 'DM Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--body);
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(253,252,249,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--fog);
+}
+
+.nav-logo {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--forest);
+  text-decoration: none;
+}
+
+.nav-back {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-back:hover { color: var(--forest); }
+
+.article-header {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+}
+
+.article-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sage);
+  background: var(--fog);
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+  margin-bottom: 1.2rem;
+}
+
+.article-header h1 {
+  font-family: var(--display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--deep-forest);
+  margin-bottom: 1.2rem;
+}
+
+.article-meta {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.article-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+}
+
+.article-body p {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+.article-body h2 {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--deep-forest);
+  margin: 2.5rem 0 1rem;
+}
+
+.article-body h3 {
+  font-family: var(--display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--forest);
+  margin: 2rem 0 0.8rem;
+}
+
+.article-body ul, .article-body ol {
+  margin: 0 0 1.5rem 1.5rem;
+  font-size: 1.05rem;
+}
+
+.article-body li { margin-bottom: 0.5rem; }
+.article-body strong { color: var(--deep-forest); }
+
+.callout {
+  background: var(--fog);
+  border-left: 3px solid var(--sage);
+  padding: 1.2rem 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.95rem;
+}
+
+.callout p { margin-bottom: 0.5rem; color: var(--forest); }
+.callout p:last-child { margin-bottom: 0; }
+
+code {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.88em;
+  background: var(--fog);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+
+pre {
+  background: var(--deep-forest);
+  color: var(--mist);
+  padding: 1.5rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* Policy template card */
+.policy-template {
+  background: var(--warm-white);
+  border: 1px solid var(--mist);
+  border-radius: 8px;
+  padding: 2.5rem 2rem;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.policy-template::before {
+  content: 'TEMPLATE';
+  position: absolute;
+  top: -0.6rem;
+  left: 1.5rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--warm-white);
+  background: var(--sage);
+  padding: 0.2rem 0.7rem;
+  border-radius: 3px;
+}
+
+.policy-template h3 {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--deep-forest);
+  margin: 0 0 0.3rem;
+}
+
+.policy-template h4 {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--forest);
+  margin: 1.8rem 0 0.6rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--fog);
+}
+
+.policy-template h4:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.policy-template p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.policy-template ul, .policy-template ol {
+  margin: 0 0 1rem 1.5rem;
+  font-size: 0.95rem;
+}
+
+.policy-template li { margin-bottom: 0.4rem; }
+
+.policy-template .placeholder {
+  color: var(--sage);
+  font-style: italic;
+}
+
+.policy-template table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.88rem;
+}
+
+.policy-template th {
+  background: var(--fog);
+  text-align: left;
+  padding: 0.6rem 0.8rem;
+  font-weight: 600;
+  color: var(--forest);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.policy-template td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid var(--fog);
+  vertical-align: top;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--forest);
+  text-decoration: none;
+  margin-top: 2rem;
+  transition: gap 0.3s;
+}
+.back-link:hover { gap: 0.6rem; }
+
+footer {
+  background: var(--cream);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--fog);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--forest); }
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 680px) {
+  .article-header { padding: 3rem 1.5rem 1.5rem; }
+  .article-body { padding: 1.5rem 1.5rem 3rem; }
+  .policy-template { padding: 2rem 1.2rem; }
+  .policy-template table { font-size: 0.8rem; }
+  .footer-links { flex-wrap: wrap; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">AI for HR</a>
+  <a href="../index.html#articles" class="nav-back">&larr; All Articles</a>
+</nav>
+
+<header class="article-header">
+  <span class="article-tag">Policy</span>
+  <h1>Your Company Needs an AI Usage Policy. Here's a Template.</h1>
+  <div class="article-meta">
+    <span>Denise Mathews</span>
+    <span>March 24, 2026</span>
+    <span>9 min read</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+<p>If your company doesn't have an AI usage policy yet, you're not alone. A 2025 survey by SHRM found that only 25% of organizations had formal guidelines for how employees should use AI tools at work. The other 75%? Their employees are using ChatGPT, Claude, Gemini, and a dozen other tools anyway. They're just doing it without guardrails.</p>
+
+<p>That gap between usage and policy is where bad things happen. An engineer pastes proprietary source code into a public AI tool. A recruiter feeds candidate resumes into a free chatbot that trains on user input. A manager uses AI to write a performance review and doesn't check if it hallucinated accomplishments the employee never actually achieved. These aren't hypothetical scenarios. I've seen every one of them happen.</p>
+
+<p>The good news: you don't need to be a lawyer or a technologist to write a solid AI usage policy. You need to be the person who cares enough to put one in place before something goes wrong. And I'm going to give you the template to do it.</p>
+
+<h2>Why HR Should Own This</h2>
+
+<p>You might be thinking, "Isn't this an IT thing?" In some organizations, sure, IT or Legal will drive the policy. But in most mid-size companies, HR is in the best position to own it for three reasons:</p>
+
+<ol>
+  <li><strong>You already manage company policies.</strong> You know how to write them, roll them out, train people on them, and enforce them. This is your lane.</li>
+  <li><strong>AI usage touches people issues.</strong> When AI is used in hiring, performance management, compensation decisions, or terminations, the legal and ethical risks are squarely in HR territory.</li>
+  <li><strong>Employees trust you.</strong> A policy that comes from IT often feels like a restriction. A policy that comes from HR, framed as "here's how to use these tools well," feels like enablement.</li>
+</ol>
+
+<h2>What Your Policy Needs to Cover</h2>
+
+<p>After reviewing dozens of AI policies from companies ranging from 50 to 50,000 employees, I've found that the most effective ones cover six areas. Skip any of them and you'll end up revising the policy within months.</p>
+
+<ul>
+  <li><strong>Approved tools and accounts.</strong> Which AI tools are employees allowed to use? Are personal accounts okay, or must they use company-provisioned accounts?</li>
+  <li><strong>Data classification.</strong> What types of information can and cannot be shared with AI tools? This is the most important section of the entire policy.</li>
+  <li><strong>Use case guidelines.</strong> What's AI appropriate for? What requires human judgment and should never be delegated to a model?</li>
+  <li><strong>Disclosure requirements.</strong> When do employees need to disclose that AI was used? To colleagues? To candidates? To customers?</li>
+  <li><strong>Prohibited uses.</strong> What's explicitly off-limits? Being specific here prevents ambiguity.</li>
+  <li><strong>Incident response.</strong> What happens if someone makes a mistake? Who do they tell? What's the process?</li>
+</ul>
+
+<h2>The Full Template</h2>
+
+<p>Below is a complete, copy-and-paste AI usage policy template. Anywhere you see italicized placeholder text, replace it with your company's specifics. I've written this to be practical and readable, not legalistic, because a policy nobody reads is worse than no policy at all.</p>
+
+<div class="policy-template">
+
+<h3>Artificial Intelligence Acceptable Use Policy</h3>
+<p><span class="placeholder">[Company Name]</span> &mdash; Effective <span class="placeholder">[Date]</span><br>
+Version 1.0 &mdash; Owned by <span class="placeholder">[HR / People Operations / IT]</span></p>
+
+<h4>1. Purpose</h4>
+<p>This policy establishes guidelines for the responsible use of artificial intelligence tools by <span class="placeholder">[Company Name]</span> employees. Our goal is to empower employees to use AI productively while protecting company data, maintaining ethical standards, and complying with applicable laws.</p>
+
+<h4>2. Scope</h4>
+<p>This policy applies to all employees, contractors, interns, and temporary workers at <span class="placeholder">[Company Name]</span>. It covers all AI-powered tools including but not limited to large language models (e.g., ChatGPT, Claude, Gemini), AI coding assistants (e.g., GitHub Copilot, Cursor), AI image generators, and any AI features embedded in existing software tools.</p>
+
+<h4>3. Approved Tools</h4>
+<p>The following AI tools have been reviewed and approved for company use:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Tool</th>
+      <th>Account Type</th>
+      <th>Approved For</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="placeholder">[e.g., Claude Team]</span></td>
+      <td>Company account</td>
+      <td>All employees</td>
+    </tr>
+    <tr>
+      <td><span class="placeholder">[e.g., GitHub Copilot]</span></td>
+      <td>Company account</td>
+      <td>Engineering team</td>
+    </tr>
+    <tr>
+      <td><span class="placeholder">[e.g., Grammarly Business]</span></td>
+      <td>Company account</td>
+      <td>All employees</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>Important:</strong> Use only company-provisioned accounts for approved tools. Personal accounts for AI tools should not be used for any company-related work, as they may lack enterprise data protections.</p>
+<p>Requests for additional AI tools should be submitted to <span class="placeholder">[IT / your manager / People Ops]</span> for security review before use.</p>
+
+<h4>4. Data Classification and AI</h4>
+<p>Not all company information can be shared with AI tools. Follow these guidelines:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Data Tier</th>
+      <th>Examples</th>
+      <th>AI Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Public</strong></td>
+      <td>Published blog posts, marketing copy, public job descriptions</td>
+      <td>Allowed with any approved tool</td>
+    </tr>
+    <tr>
+      <td><strong>Internal</strong></td>
+      <td>Internal memos, process documentation, meeting notes (non-sensitive)</td>
+      <td>Allowed with approved tools on company accounts only</td>
+    </tr>
+    <tr>
+      <td><strong>Confidential</strong></td>
+      <td>Financial data, unreleased product details, employee PII, compensation data, candidate information</td>
+      <td>Not permitted without explicit approval from <span class="placeholder">[Legal / CISO / VP of People]</span></td>
+    </tr>
+    <tr>
+      <td><strong>Restricted</strong></td>
+      <td>SSNs, health records, credentials/passwords, customer payment data, trade secrets</td>
+      <td>Never permitted in any AI tool under any circumstances</td>
+    </tr>
+  </tbody>
+</table>
+<p><strong>When in doubt, don't paste it in.</strong> If you're unsure about a data classification, ask <span class="placeholder">[IT / your manager]</span> before using it with an AI tool.</p>
+
+<h4>5. Acceptable Use Guidelines</h4>
+<p>AI tools may be used for:</p>
+<ul>
+  <li>Drafting and editing written content (emails, documents, presentations)</li>
+  <li>Brainstorming and ideation</li>
+  <li>Summarizing meeting notes or long documents</li>
+  <li>Research and information gathering</li>
+  <li>Code generation and debugging (engineering roles)</li>
+  <li>Data analysis on appropriately classified data</li>
+  <li>Creating first drafts of policies, procedures, and templates</li>
+</ul>
+<p><strong>Human review is always required.</strong> AI output must be reviewed for accuracy, bias, and appropriateness before being used in any final deliverable, communication, or decision.</p>
+
+<h4>6. Disclosure Requirements</h4>
+<ul>
+  <li><strong>Internal work:</strong> Disclosure is encouraged but not required for routine tasks (drafting emails, editing copy, brainstorming).</li>
+  <li><strong>Hiring decisions:</strong> Any use of AI in resume screening, candidate evaluation, or interview scoring must be disclosed to the hiring team and documented.</li>
+  <li><strong>Performance management:</strong> AI-generated content used in performance reviews, PIPs, or promotion recommendations must be disclosed to the reviewing manager and the employee.</li>
+  <li><strong>Customer-facing content:</strong> <span class="placeholder">[Define your company's position: e.g., "AI-assisted content does not require disclosure" or "All AI-generated customer content must be reviewed by the Communications team"]</span></li>
+  <li><strong>Legal and compliance documents:</strong> All AI use in legal, compliance, or regulatory documents must be disclosed to the Legal team.</li>
+</ul>
+
+<h4>7. Prohibited Uses</h4>
+<p>The following uses of AI are strictly prohibited:</p>
+<ul>
+  <li>Inputting Restricted-tier data (SSNs, health records, passwords, payment data) into any AI tool</li>
+  <li>Using AI to make final hiring, termination, or disciplinary decisions without human review and approval</li>
+  <li>Using AI to monitor, surveil, or score employees without their knowledge and consent</li>
+  <li>Representing AI-generated work as original human work in contexts where authenticity is required (e.g., published research, sworn statements, certifications)</li>
+  <li>Using AI tools to circumvent security controls, access restrictions, or other company policies</li>
+  <li>Using AI to generate content that is discriminatory, harassing, or in violation of our Code of Conduct</li>
+  <li>Using unapproved AI tools for company work without prior authorization</li>
+</ul>
+
+<h4>8. Incident Response</h4>
+<p>If you believe company data has been inappropriately shared with an AI tool, or if you discover AI-generated content that may be harmful, inaccurate, or in violation of this policy:</p>
+<ol>
+  <li><strong>Report immediately</strong> to <span class="placeholder">[IT Security / your manager / People Ops]</span> via <span class="placeholder">[email / Slack channel / reporting tool]</span></li>
+  <li><strong>Document</strong> what data was shared, which tool was used, and the approximate date and time</li>
+  <li><strong>Do not attempt</strong> to delete your conversation history with the AI tool until IT has reviewed the incident</li>
+  <li><strong>No retaliation:</strong> Good-faith reports of accidental data exposure will not result in disciplinary action. We want people to report incidents, not hide them.</li>
+</ol>
+
+<h4>9. Training and Compliance</h4>
+<p>All employees will receive training on this policy within <span class="placeholder">[30 days]</span> of its effective date. New employees will receive training during onboarding. Annual refresher training will be provided, and this policy will be reviewed and updated <span class="placeholder">[quarterly / semi-annually]</span>.</p>
+
+<h4>10. Policy Violations</h4>
+<p>Violations of this policy will be addressed through the standard disciplinary process outlined in the Employee Handbook. The severity of the response will depend on the nature of the violation, whether it was intentional, and the potential impact on the company and its stakeholders.</p>
+
+<h4>11. Questions and Feedback</h4>
+<p>This is a living document. As AI technology evolves, so will this policy. Questions, suggestions, and feedback should be directed to <span class="placeholder">[People Ops email / Slack channel / policy owner name]</span>.</p>
+
+</div>
+
+<h2>How to Present This to Leadership</h2>
+
+<p>Having a template is one thing. Getting it approved is another. Here's how I'd position this conversation with your leadership team:</p>
+
+<p><strong>Lead with risk, not restriction.</strong> Don't frame this as "we need to control AI usage." Frame it as "our employees are already using AI tools. Right now, we have zero visibility into what data is being shared. This policy gives us a framework before something goes wrong."</p>
+
+<p><strong>Bring examples.</strong> Samsung banned ChatGPT entirely after engineers leaked proprietary source code. Several law firms have been sanctioned after filing AI-generated briefs with fabricated case citations. These aren't fear-mongering; they're things that actually happened. A proactive policy is dramatically cheaper than a reactive incident.</p>
+
+<p><strong>Show the enablement angle.</strong> An AI policy isn't just about risk mitigation. It's about giving employees explicit permission to use AI tools. Many employees are already using them and feeling guilty about it, or avoiding them entirely because they're unsure what's allowed. Clear guidelines unlock productivity.</p>
+
+<div class="callout">
+  <p><strong>Pro tip:</strong> Don't try to get the perfect policy approved on day one. Get version 1.0 approved quickly and commit to reviewing it quarterly. AI is moving fast and your policy should move with it. An 80% policy today is better than a perfect policy six months from now.</p>
+</div>
+
+<h2>After the Policy Is Live</h2>
+
+<p>A policy that lives in a Google Doc nobody reads is just a liability shield. To make it actually work:</p>
+
+<ul>
+  <li><strong>Host a 30-minute training session.</strong> Walk through the data classification table with real examples from your company. This is the section people struggle with most.</li>
+  <li><strong>Create a Slack channel</strong> (something like #ai-at-work) where people can ask questions, share useful prompts, and flag concerns. Make it a positive space, not a compliance channel.</li>
+  <li><strong>Audit quarterly.</strong> Check which AI tools employees are actually using (your IT team can help with this). Update the approved tools list. Review any reported incidents.</li>
+  <li><strong>Celebrate good usage.</strong> When someone uses AI to save their team ten hours of work, share that story. The goal is a culture where AI is used openly and well, not hidden and badly.</li>
+</ul>
+
+<p>You don't need to be an AI expert to write this policy. You need to be the person who steps up and says, "We need guardrails and I'm going to build them." That's an HR move. And your company will be better for it.</p>
+
+<a href="../index.html#articles" class="back-link">&larr; Back to all articles</a>
+
+</article>
+
+<footer>
+  <ul class="footer-links">
+    <li><a href="../index.html#articles">Articles</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#subscribe">Subscribe</a></li>
+    <li><a href="https://www.linkedin.com/in/denmath">LinkedIn</a></li>
+  </ul>
+  <p class="footer-copy">&copy; 2026 AI for HR &middot; Built with &hearts; in San Francisco</p>
+</footer>
+
+</body>
+</html>

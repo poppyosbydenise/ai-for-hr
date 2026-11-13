@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build an Employee FAQ Bot in an Afternoon — AI for HR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #2D4A3E;
+  --deep-forest: #1B3129;
+  --sage: #7A9E8E;
+  --mist: #B8CFC4;
+  --fog: #E8EDE9;
+  --cream: #F7F5F0;
+  --warm-white: #FDFCF9;
+  --bark: #5C4A3A;
+  --gold: #C4A96A;
+  --text: #2A2A28;
+  --text-light: #6B6B65;
+  --text-muted: #9B9B93;
+  --display: 'Fraunces', serif;
+  --body: 'DM Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--body);
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(253,252,249,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--fog);
+}
+
+.nav-logo {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--forest);
+  text-decoration: none;
+}
+
+.nav-back {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-back:hover { color: var(--forest); }
+
+/* ===== ARTICLE HEADER ===== */
+.article-header {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+}
+
+.article-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--warm-white);
+  background: var(--bark);
+  padding: 0.3rem 0.75rem;
+  border-radius: 3px;
+  margin-bottom: 1.25rem;
+}
+
+.article-header h1 {
+  font-family: var(--display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 300;
+  color: var(--forest);
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--fog);
+}
+
+.article-meta .author { color: var(--text-light); font-weight: 500; }
+
+/* ===== ARTICLE BODY ===== */
+.article-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
+.article-body p {
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.article-body h2 {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--forest);
+  margin: 2.5rem 0 1rem;
+  line-height: 1.3;
+}
+
+.article-body h3 {
+  font-family: var(--display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--bark);
+  margin: 2rem 0 0.75rem;
+}
+
+.article-body ul, .article-body ol {
+  margin: 0 0 1.5rem 1.5rem;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.article-body li { margin-bottom: 0.5rem; }
+
+.article-body strong { color: var(--forest); font-weight: 600; }
+
+.article-body a {
+  color: var(--forest);
+  text-decoration: underline;
+  text-decoration-color: var(--mist);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.3s;
+}
+
+.article-body a:hover { text-decoration-color: var(--forest); }
+
+/* Callout box */
+.callout {
+  background: var(--fog);
+  border-left: 3px solid var(--sage);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0 6px 6px 0;
+  margin: 2rem 0;
+}
+
+.callout p {
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 0;
+  line-height: 1.7;
+}
+
+.callout p + p { margin-top: 0.75rem; }
+
+.callout-title {
+  font-weight: 600;
+  color: var(--forest);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+/* Code blocks */
+.code-block {
+  background: #1a2332;
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.code-block code {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.83rem;
+  color: #e2e8f0;
+  line-height: 1.7;
+  white-space: pre;
+  display: block;
+}
+
+.code-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.code-block .comment { color: #64748b; }
+.code-block .string { color: #86efac; }
+.code-block .keyword { color: #93c5fd; }
+.code-block .func { color: #c4b5fd; }
+.code-block .number { color: #fcd34d; }
+
+/* Step indicators */
+.step {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 2.5rem 0 1rem;
+}
+
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--forest);
+  color: var(--warm-white);
+  font-family: var(--display);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.step h2 {
+  margin: 0;
+}
+
+/* Who does what boxes */
+.role-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.role-card {
+  background: var(--warm-white);
+  border: 1px solid var(--fog);
+  border-radius: 6px;
+  padding: 1.25rem;
+}
+
+.role-card h4 {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.role-card.hr h4 { color: var(--sage); }
+.role-card.dev h4 { color: var(--bark); }
+
+.role-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.role-card li {
+  padding: 0.25rem 0;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.role-card li::before {
+  content: '- ';
+  color: var(--text-muted);
+}
+
+/* Back link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--sage);
+  text-decoration: none;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--fog);
+  transition: color 0.3s;
+  width: 100%;
+}
+
+.back-link:hover { color: var(--forest); }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--cream);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--fog);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--forest); }
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .article-header { padding: 2.5rem 1.25rem 1.5rem; }
+  .article-body { padding: 2rem 1.25rem 3rem; }
+  .article-meta { flex-wrap: wrap; gap: 0.5rem; }
+  .role-box { grid-template-columns: 1fr; }
+  .code-block { padding: 1rem; }
+  .code-block code { font-size: 0.75rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">AI for HR</a>
+  <a href="../index.html#articles" class="nav-back">&larr; All Articles</a>
+</nav>
+
+<article>
+  <div class="article-header">
+    <span class="article-tag">Tutorial</span>
+    <h1>Build an Employee FAQ Bot in an Afternoon</h1>
+    <div class="article-meta">
+      <span class="author">Denise Mathews</span>
+      <span>March 21, 2026</span>
+      <span>12 min read</span>
+    </div>
+  </div>
+
+  <div class="article-body">
+    <p>I used to spend at least five hours a week answering the same questions. "How many PTO days do I have?" "What is our parental leave policy?" "How do I submit an expense report?" "When is the next company holiday?" Multiply that across every new hire, every open enrollment season, every policy update, and it adds up fast.</p>
+
+    <p>So I built a bot. It lives in Slack, it knows our company policies inside and out, and it answers employee questions instantly, twenty-four hours a day. It took me an afternoon to get the first version working, and it has saved our team more time than any other tool I have built.</p>
+
+    <p>In this guide, I am going to walk you through exactly how to build one. I will be honest about which parts you can do yourself and which parts need a developer. Let's get into it.</p>
+
+    <h2>What We Are Building</h2>
+
+    <p>Here is the big picture: a Slack bot that employees can message with questions about company policies, benefits, PTO, and other common HR topics. The bot uses Claude's API to understand the question and generate an answer, grounded in your actual company documents. It does not make things up because we give it your real policies to reference.</p>
+
+    <p>The architecture is simple:</p>
+
+    <ol>
+      <li>Employee sends a message to the bot in Slack</li>
+      <li>Your server receives the message through Slack's API</li>
+      <li>Your server sends the question to Claude, along with your company knowledge base</li>
+      <li>Claude generates an answer based on your actual policies</li>
+      <li>The answer is sent back to the employee in Slack</li>
+    </ol>
+
+    <div class="callout">
+      <div class="callout-title">Who Does What?</div>
+      <p>Let me be upfront: you will need a developer for parts of this project. But the most important work, curating the knowledge base, writing the system prompt, testing the answers, and rolling it out, is all HR work. Here is the split:</p>
+    </div>
+
+    <div class="role-box">
+      <div class="role-card hr">
+        <h4>HR Does This</h4>
+        <ul>
+          <li>Gather and organize company policies</li>
+          <li>Write and refine the system prompt</li>
+          <li>Test answers for accuracy and tone</li>
+          <li>Define what the bot should and should not answer</li>
+          <li>Write the rollout communication</li>
+          <li>Monitor and improve over time</li>
+        </ul>
+      </div>
+      <div class="role-card dev">
+        <h4>Developer Does This</h4>
+        <ul>
+          <li>Set up the Slack app and API keys</li>
+          <li>Write the server code</li>
+          <li>Deploy the bot to a server</li>
+          <li>Handle error logging and monitoring</li>
+          <li>Set up any database if needed</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>If you do not have a developer on your team, this is a perfect project to bring to your engineering team as a request. It is small, well-scoped, and has clear business value. Most engineers can set up the technical pieces in a few hours.</p>
+
+    <div class="step">
+      <span class="step-number">1</span>
+      <h2>Build Your Knowledge Base</h2>
+    </div>
+
+    <p>This is the most important step, and it is 100% HR work. The bot is only as good as the information you give it. You need to gather every document an employee might ask about and organize it into a clean, structured format.</p>
+
+    <p>Start with the questions you actually get asked. Go through your Slack DMs, your email, your ticketing system if you have one. What are the top 20 questions? For most HR teams, the list looks something like this:</p>
+
+    <ul>
+      <li>PTO policy, accrual, and how to request time off</li>
+      <li>Health insurance details, enrollment, and changes</li>
+      <li>Parental leave policy</li>
+      <li>Expense reimbursement process</li>
+      <li>Company holidays</li>
+      <li>Remote work and WFH policy</li>
+      <li>401(k) or retirement benefits</li>
+      <li>Equipment and home office stipend</li>
+      <li>Performance review timeline and process</li>
+      <li>Who to contact for specific issues</li>
+    </ul>
+
+    <p>For each topic, create a clean text document with the current, accurate policy. Strip out the legalese where you can. The bot will work better with clear, plain-language source material.</p>
+
+    <p>Save all of these as a single text file, or a set of text files organized by topic. Here is an example of how to structure one section:</p>
+
+    <div class="code-block">
+      <div class="code-label">knowledge-base.txt (excerpt)</div>
+      <code><span class="comment">## PTO Policy</span>
+<span class="comment">## Last updated: March 2026</span>
+
+Full-time employees accrue 20 days of PTO per year (accrued monthly
+at 1.67 days/month). PTO begins accruing on your first day.
+
+To request PTO:
+1. Submit a request in BambooHR at least 5 business days in advance
+2. Your manager will approve or discuss within 2 business days
+3. For requests longer than 5 consecutive days, submit 2 weeks ahead
+
+Unused PTO rolls over up to 5 days into the next calendar year.
+PTO beyond the 5-day rollover cap is forfeited on January 1.
+
+Questions? Contact hr@yourcompany.com or message #ask-hr in Slack.
+
+<span class="comment">## Company Holidays (2026)</span>
+
+- January 1 — New Year's Day
+- January 19 — MLK Jr. Day
+- February 16 — Presidents' Day
+- May 25 — Memorial Day
+- July 3 — Independence Day (observed)
+- September 7 — Labor Day
+- November 26–27 — Thanksgiving
+- December 24–25 — Winter Break
+- December 31 — New Year's Eve</code>
+    </div>
+
+    <div class="step">
+      <span class="step-number">2</span>
+      <h2>Write the System Prompt</h2>
+    </div>
+
+    <p>The system prompt is the instruction set you give Claude that tells it how to behave. This is where you, the HR professional, have the most influence over the bot's personality and accuracy. A developer can set up the plumbing, but only you know how the bot should sound and what it should (and should not) say.</p>
+
+    <p>Here is a system prompt I have used and refined over several iterations:</p>
+
+    <div class="code-block">
+      <div class="code-label">system_prompt.txt</div>
+      <code>You are a friendly, helpful HR assistant for [Company Name].
+Your job is to answer employee questions about company policies,
+benefits, PTO, and general HR topics.
+
+RULES:
+- ONLY answer based on the company knowledge base provided below.
+- If the answer is not in the knowledge base, say: "I don't have
+  that information in my current docs. Please reach out to
+  hr@yourcompany.com or post in #ask-hr and a human will help you."
+- NEVER make up policy details, dates, or numbers.
+- NEVER provide legal advice. If someone asks a legal question,
+  direct them to hr@yourcompany.com.
+- Be warm and conversational, but concise. Employees are busy.
+- If a question seems urgent or sensitive (harassment, discrimination,
+  safety concern), respond with: "This sounds like something that
+  needs a real person. Please reach out to [HR Contact] directly
+  at [email/phone]. This will be handled confidentially."
+- Do not discuss individual compensation, performance reviews,
+  or other employees.
+
+KNOWLEDGE BASE:
+[Your knowledge base content goes here]</code>
+    </div>
+
+    <div class="callout">
+      <div class="callout-title">Why This Prompt Works</div>
+      <p>Notice the explicit rules about what the bot should NOT do. This is critical. Without these guardrails, a language model will try to be helpful by making up answers. The instruction to say "I don't have that information" when something is missing is what keeps the bot trustworthy. Employees will forgive a bot that says "I'm not sure, ask HR." They will not forgive one that gives them wrong information about their health insurance.</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">3</span>
+      <h2>Set Up the Technical Pieces</h2>
+    </div>
+
+    <p>This is where your developer comes in. Here is the code for a basic Slack bot that connects to Claude's API. I am including it here so you can see how simple it is, and so you can hand this article to your developer as a starting point.</p>
+
+    <p>First, install the required packages:</p>
+
+    <div class="code-block">
+      <div class="code-label">Terminal</div>
+      <code>pip install slack-bolt anthropic python-dotenv</code>
+    </div>
+
+    <p>Then, create the bot:</p>
+
+    <div class="code-block">
+      <div class="code-label">hr_bot.py</div>
+      <code><span class="keyword">import</span> os
+<span class="keyword">from</span> pathlib <span class="keyword">import</span> Path
+<span class="keyword">from</span> dotenv <span class="keyword">import</span> load_dotenv
+<span class="keyword">from</span> slack_bolt <span class="keyword">import</span> App
+<span class="keyword">from</span> slack_bolt.adapter.socket_mode <span class="keyword">import</span> SocketModeHandler
+<span class="keyword">import</span> anthropic
+
+load_dotenv()
+
+<span class="comment"># Initialize Slack app and Claude client</span>
+app = App(token=os.environ[<span class="string">"SLACK_BOT_TOKEN"</span>])
+claude = anthropic.Anthropic(api_key=os.environ[<span class="string">"ANTHROPIC_API_KEY"</span>])
+
+<span class="comment"># Load the knowledge base and system prompt</span>
+knowledge_base = Path(<span class="string">"knowledge-base.txt"</span>).read_text()
+system_prompt = Path(<span class="string">"system_prompt.txt"</span>).read_text()
+system_prompt = system_prompt.replace(
+    <span class="string">"[Your knowledge base content goes here]"</span>,
+    knowledge_base
+)
+
+<span class="keyword">def</span> <span class="func">ask_claude</span>(question: str) -> str:
+    <span class="string">"""Send an employee question to Claude and return the answer."""</span>
+    message = claude.messages.create(
+        model=<span class="string">"claude-sonnet-4-20250514"</span>,
+        max_tokens=<span class="number">1024</span>,
+        system=system_prompt,
+        messages=[{<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: question}]
+    )
+    <span class="keyword">return</span> message.content[<span class="number">0</span>].text
+
+<span class="comment"># Handle direct messages to the bot</span>
+<span class="keyword">@app.event</span>(<span class="string">"message"</span>)
+<span class="keyword">def</span> <span class="func">handle_message</span>(event, say):
+    <span class="comment"># Only respond to DMs (not channels) and ignore bot messages</span>
+    <span class="keyword">if</span> event.get(<span class="string">"channel_type"</span>) == <span class="string">"im"</span> <span class="keyword">and not</span> event.get(<span class="string">"bot_id"</span>):
+        question = event[<span class="string">"text"</span>]
+        <span class="keyword">try</span>:
+            answer = ask_claude(question)
+            say(answer)
+        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:
+            say(<span class="string">"Something went wrong on my end. Please try again "</span>
+                <span class="string">"or reach out to hr@yourcompany.com directly."</span>)
+            <span class="func">print</span>(f<span class="string">"Error: {e}"</span>)
+
+<span class="comment"># Also respond to @mentions in channels</span>
+<span class="keyword">@app.event</span>(<span class="string">"app_mention"</span>)
+<span class="keyword">def</span> <span class="func">handle_mention</span>(event, say):
+    question = event[<span class="string">"text"</span>]
+    <span class="keyword">try</span>:
+        answer = ask_claude(question)
+        say(answer, thread_ts=event[<span class="string">"ts"</span>])
+    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:
+        say(<span class="string">"Something went wrong. Please try #ask-hr instead."</span>,
+            thread_ts=event[<span class="string">"ts"</span>])
+
+<span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:
+    handler = SocketModeHandler(app, os.environ[<span class="string">"SLACK_APP_TOKEN"</span>])
+    <span class="func">print</span>(<span class="string">"HR FAQ Bot is running!"</span>)
+    handler.start()</code>
+    </div>
+
+    <p>You will also need a <code>.env</code> file with your API keys:</p>
+
+    <div class="code-block">
+      <div class="code-label">.env</div>
+      <code>SLACK_BOT_TOKEN=xoxb-your-bot-token
+SLACK_APP_TOKEN=xapp-your-app-token
+ANTHROPIC_API_KEY=sk-ant-your-api-key</code>
+    </div>
+
+    <p>Your developer will need to create a Slack app at api.slack.com, enable Socket Mode, add the necessary bot scopes (chat:write, im:history, app_mentions:read), and install it to your workspace. This takes about 15 minutes if they have done it before.</p>
+
+    <div class="step">
+      <span class="step-number">4</span>
+      <h2>Test Thoroughly Before You Launch</h2>
+    </div>
+
+    <p>This is the step most people rush through, and it is the step that matters most. Before a single employee sees this bot, you need to test it with every question you can think of, including the ones designed to break it.</p>
+
+    <p>Here is my testing checklist:</p>
+
+    <p><strong>Accuracy tests:</strong> Ask every common question and verify the answer matches your actual policy. "How many PTO days do I get?" "What is the deadline for open enrollment?" "How do I request parental leave?" Check every number, every date, every process step.</p>
+
+    <p><strong>Boundary tests:</strong> Ask questions the bot should NOT answer. "What is Sarah's salary?" "Am I going to get fired?" "Can I sue the company for this?" The bot should gracefully redirect to a human every time.</p>
+
+    <p><strong>Edge case tests:</strong> Ask ambiguous questions. "What happens to my PTO if I leave?" "Do contractors get benefits?" "My manager is making me work on a holiday." These are the questions that reveal whether your knowledge base has gaps.</p>
+
+    <p><strong>Tone tests:</strong> Ask the same question in different ways. Formally. Casually. Frustrated. The bot should maintain a consistent, warm, helpful tone regardless of how the question is asked.</p>
+
+    <div class="callout">
+      <div class="callout-title">Common Issue</div>
+      <p>The most frequent problem I see in testing is the bot confidently answering questions that are NOT in the knowledge base by inferring or guessing. If this happens, make the "I don't have that information" instruction in your system prompt more explicit. You can also add: "Before answering, verify that the specific information is explicitly stated in the knowledge base. If you are inferring or guessing, redirect to a human instead."</p>
+    </div>
+
+    <div class="step">
+      <span class="step-number">5</span>
+      <h2>Roll It Out Thoughtfully</h2>
+    </div>
+
+    <p>Do not just flip the switch and announce it to the whole company. Roll it out in phases so you can catch issues early.</p>
+
+    <p><strong>Week 1: Internal testing.</strong> Your HR team uses it exclusively. Everyone on the team tries to break it. Document every wrong answer and fix the knowledge base or system prompt accordingly.</p>
+
+    <p><strong>Week 2: Beta group.</strong> Invite 10 to 15 employees from different teams to try the bot. Ask them to report anything that seems off. These should be people who are comfortable giving honest feedback.</p>
+
+    <p><strong>Week 3: Company launch.</strong> Send a warm, clear announcement. Here is what to include:</p>
+
+    <ul>
+      <li>What the bot can help with (be specific: PTO, benefits, policies, holidays)</li>
+      <li>What it cannot help with (be specific: personal situations, legal questions, sensitive matters)</li>
+      <li>How to use it (DM the bot, or mention it in a channel)</li>
+      <li>That it is powered by AI and answers come from your company's actual policies</li>
+      <li>That HR is still always available for anything the bot cannot handle</li>
+    </ul>
+
+    <p>Be transparent that this is an AI tool. Employees appreciate honesty about what they are interacting with, and it sets the right expectations about the bot's limitations.</p>
+
+    <h2>Keeping It Running</h2>
+
+    <p>A FAQ bot is not a "set it and forget it" tool. Policies change. Benefits update. New questions come up that you did not anticipate. Here is a simple maintenance routine:</p>
+
+    <p><strong>Monthly:</strong> Review the questions the bot received. Are there new patterns? Questions it could not answer? Topics you need to add to the knowledge base?</p>
+
+    <p><strong>Quarterly:</strong> Review and update the entire knowledge base. Make sure every policy, date, and process is still current. This is also a good time to review the system prompt and refine the tone or rules based on what you have observed.</p>
+
+    <p><strong>On every policy change:</strong> Update the knowledge base immediately. If you change your PTO policy on April 1, the bot's knowledge base should be updated on April 1. Not April 15. Not "when we get around to it."</p>
+
+    <h2>What This Costs</h2>
+
+    <p>Let me give you realistic numbers so you can make the business case.</p>
+
+    <p><strong>Claude API costs:</strong> For a company of 200 employees, expect to spend roughly $20 to $50 per month on API calls. Each question-and-answer exchange costs a fraction of a cent. Even heavy usage will not break the bank.</p>
+
+    <p><strong>Slack:</strong> If you already have Slack, there is no additional cost. The bot uses Slack's free API tier for most use cases.</p>
+
+    <p><strong>Hosting:</strong> A small server to run the bot costs $5 to $20 per month on any cloud provider. Your developer can also run it as a serverless function for even less.</p>
+
+    <p><strong>Developer time:</strong> Initial setup is 4 to 8 hours. Ongoing maintenance is about 1 hour per month.</p>
+
+    <p><strong>Your time:</strong> Building the knowledge base takes 3 to 5 hours upfront. Testing takes 2 to 3 hours. Maintenance is about 1 to 2 hours per month.</p>
+
+    <p>Compare that to the 5 or more hours per week you currently spend answering repetitive questions. The bot pays for itself within the first month.</p>
+
+    <h2>What the Bot Should Never Replace</h2>
+
+    <p>I want to end with something important. A FAQ bot is fantastic for routine questions with clear, documented answers. It is not a replacement for the human side of HR.</p>
+
+    <p>When an employee is going through a difficult personal situation, they need a person. When someone has a concern about their manager, they need a person. When a team is struggling and morale is low, they need a person. The entire point of building this bot is to free up your time so you can show up more fully for the moments that actually require a human being.</p>
+
+    <p>Build the bot. Save the time. Then reinvest those hours into the work that only you can do.</p>
+
+    <a href="../index.html#articles" class="back-link">&larr; Back to all articles</a>
+  </div>
+</article>
+
+<footer>
+  <ul class="footer-links">
+    <li><a href="../index.html#articles">Articles</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#subscribe">Subscribe</a></li>
+    <li><a href="https://www.linkedin.com/in/denmath">LinkedIn</a></li>
+  </ul>
+  <p class="footer-copy">&copy; 2026 AI for HR &middot; Built with &hearts; in San Francisco</p>
+</footer>
+
+</body>
+</html>

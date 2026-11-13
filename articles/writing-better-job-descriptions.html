@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Write Job Descriptions That Actually Attract Good Candidates — AI for HR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #2D4A3E;
+  --deep-forest: #1B3129;
+  --sage: #7A9E8E;
+  --mist: #B8CFC4;
+  --fog: #E8EDE9;
+  --cream: #F7F5F0;
+  --warm-white: #FDFCF9;
+  --bark: #5C4A3A;
+  --gold: #C4A96A;
+  --text: #2A2A28;
+  --text-light: #6B6B65;
+  --text-muted: #9B9B93;
+  --display: 'Fraunces', serif;
+  --body: 'DM Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--body);
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(253,252,249,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--fog);
+}
+
+.nav-logo {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--forest);
+  text-decoration: none;
+}
+
+.nav-back {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-back:hover { color: var(--forest); }
+
+/* ARTICLE HEADER */
+.article-header {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+}
+
+.article-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sage);
+  background: var(--fog);
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+  margin-bottom: 1.2rem;
+}
+
+.article-header h1 {
+  font-family: var(--display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--deep-forest);
+  margin-bottom: 1.2rem;
+}
+
+.article-meta {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.article-meta span { display: flex; align-items: center; gap: 0.3rem; }
+
+/* ARTICLE BODY */
+.article-body {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
+}
+
+.article-body p {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+}
+
+.article-body h2 {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--deep-forest);
+  margin: 2.5rem 0 1rem;
+}
+
+.article-body h3 {
+  font-family: var(--display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--forest);
+  margin: 2rem 0 0.8rem;
+}
+
+.article-body ul, .article-body ol {
+  margin: 0 0 1.5rem 1.5rem;
+  font-size: 1.05rem;
+}
+
+.article-body li { margin-bottom: 0.5rem; }
+
+.article-body strong { color: var(--deep-forest); }
+
+.callout {
+  background: var(--fog);
+  border-left: 3px solid var(--sage);
+  padding: 1.2rem 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.95rem;
+}
+
+.callout p { margin-bottom: 0.5rem; color: var(--forest); }
+.callout p:last-child { margin-bottom: 0; }
+
+code {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.88em;
+  background: var(--fog);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+
+pre {
+  background: var(--deep-forest);
+  color: var(--mist);
+  padding: 1.5rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+.before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.before-after .before,
+.before-after .after {
+  padding: 1.2rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.before-after .before {
+  background: #f5ebe4;
+  border-top: 3px solid var(--bark);
+}
+
+.before-after .after {
+  background: var(--fog);
+  border-top: 3px solid var(--sage);
+}
+
+.before-after .label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.before .label { color: var(--bark); }
+.after .label { color: var(--sage); }
+
+.before-after p { font-size: 0.9rem; margin-bottom: 0.5rem; }
+.before-after s { color: var(--text-muted); }
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--forest);
+  text-decoration: none;
+  margin-top: 2rem;
+  transition: gap 0.3s;
+}
+.back-link:hover { gap: 0.6rem; }
+
+/* FOOTER */
+footer {
+  background: var(--cream);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--fog);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--forest); }
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 680px) {
+  .article-header { padding: 3rem 1.5rem 1.5rem; }
+  .article-body { padding: 1.5rem 1.5rem 3rem; }
+  .before-after { grid-template-columns: 1fr; }
+  .footer-links { flex-wrap: wrap; gap: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">AI for HR</a>
+  <a href="../index.html#articles" class="nav-back">&larr; All Articles</a>
+</nav>
+
+<header class="article-header">
+  <span class="article-tag">Recruiting</span>
+  <h1>Write Job Descriptions That Actually Attract Good Candidates</h1>
+  <div class="article-meta">
+    <span>Denise Mathews</span>
+    <span>March 28, 2026</span>
+    <span>7 min read</span>
+  </div>
+</header>
+
+<article class="article-body">
+
+<p>Here is a painful truth: the job descriptions your company posts are probably driving away the exact people you want to hire. And I don't mean they're slightly suboptimal. I mean they're actively filtering out qualified, diverse, motivated candidates before they ever click "Apply."</p>
+
+<p>I know that's a bold claim. So let me back it up. Research from LinkedIn shows that women apply to 20% fewer jobs than men, not because they're less qualified, but because they're more likely to self-select out when a JD lists requirements they don't meet 100%. A Hewlett Packard internal report found that men apply when they meet about 60% of the qualifications; women only apply when they meet 100%. Your "nice to have" list? It's not nice to have. It's a filter.</p>
+
+<p>Then there's the language itself. Words like "rockstar," "ninja," "aggressive," and "dominate" are coded masculine. Phrases like "must be able to lift 50 pounds" in a desk job, or "fast-paced environment" as a euphemism for "we don't staff properly," are telling candidates exactly what your culture is like, even when you don't mean to.</p>
+
+<p>The good news? AI can help you fix this. Not by writing soulless, generic JDs, but by helping you spot the hidden problems in your existing ones and rewrite them so they actually speak to the people you want to reach.</p>
+
+<h2>Why Most Job Descriptions Fail</h2>
+
+<p>Before we fix anything, let's name the problems. Most JDs fail for one or more of these reasons:</p>
+
+<ul>
+  <li><strong>Too many requirements.</strong> Ten bullet points of "must haves" when three of them actually matter. Every unnecessary requirement is a reason for a good candidate to walk away.</li>
+  <li><strong>Gendered language.</strong> "He will manage..." is obvious, but subtler coded language is everywhere. Words like "competitive," "dominant," and "assertive" skew masculine. Words like "supportive," "collaborative," and "nurturing" skew feminine. Neither is neutral.</li>
+  <li><strong>Ableist assumptions.</strong> "Must be able to stand for 8 hours" when the job can be done sitting. "Clean driving record required" for a role that never leaves the office. These exclude candidates with disabilities who could do the actual job perfectly well.</li>
+  <li><strong>Jargon overload.</strong> Internal acronyms, unnecessary technical requirements, or industry terms that only insiders know. This especially hurts career-changers, who often bring the most creative thinking.</li>
+  <li><strong>No information about what the person actually gets.</strong> Candidates aren't just applying to give you labor. They want to know: What will I learn? Who will I work with? What does growth look like here?</li>
+</ul>
+
+<h2>Using AI to Audit Your Existing JDs</h2>
+
+<p>The fastest way to improve your hiring pipeline is to take the JDs you already have and run them through an AI audit. Here's a prompt I use with Claude that works remarkably well:</p>
+
+<pre><code>I'm going to share a job description. Please analyze it for:
+
+1. Gendered language (words that research shows skew masculine or feminine)
+2. Ableist language or unnecessary physical requirements
+3. Requirements that seem inflated or unnecessary for the role
+4. Jargon or acronyms that might confuse external candidates
+5. Missing information candidates typically want (compensation, growth, team info)
+6. Overall tone — does it feel welcoming or intimidating?
+
+For each issue you find, explain why it's a problem and suggest
+a specific alternative. Then rewrite the full JD with your
+recommendations applied.
+
+Here's the job description:
+[paste your JD here]</code></pre>
+
+<p>What you'll get back is a line-by-line breakdown that would take a human reviewer 30 minutes to produce. And because AI doesn't have an ego about the copy it wrote, it will be honest about problems in ways your hiring manager might not be.</p>
+
+<div class="callout">
+  <p><strong>A note on AI and bias:</strong> AI models can carry their own biases, pulled from training data written by humans. Use AI as a first-pass auditor, not the final word. Pair it with tools like Textio or the Gender Decoder, and always have a human review the final version. The goal is AI-assisted, not AI-replaced.</p>
+</div>
+
+<h2>Before and After: Real JD Transformations</h2>
+
+<p>Let me show you what this looks like in practice. These are based on real JDs I've helped rewrite (details changed to protect the innocent).</p>
+
+<h3>Example 1: HR Coordinator Role</h3>
+
+<div class="before-after">
+  <div class="before">
+    <span class="label">Before</span>
+    <p><strong>HR Coordinator</strong></p>
+    <p>We are looking for an aggressive self-starter who can hit the ground running. The ideal candidate will be a rockstar who thrives in a fast-paced, high-pressure environment.</p>
+    <p>Requirements: Bachelor's degree required. 3-5 years HR experience. PHR certification. Expert in Workday, ADP, BambooHR, and SAP SuccessFactors. Must be able to lift 25 lbs. Clean driving record. Available for occasional weekend work.</p>
+  </div>
+  <div class="after">
+    <span class="label">After</span>
+    <p><strong>HR Coordinator</strong></p>
+    <p>We're looking for a detail-oriented HR professional who enjoys building systems that help people do their best work. You'll join a small, collaborative team that values clear communication and steady improvement over chaos.</p>
+    <p>What you need: 2+ years in an HR or People Ops role. Familiarity with at least one HRIS platform (we use Workday, but we'll train you). A genuine interest in making the employee experience better.</p>
+    <p>Nice to have: PHR certification or coursework toward it. Experience with reporting or HR analytics.</p>
+    <p>Salary: $58,000-$68,000 + benefits. Hybrid schedule (3 days in-office, 2 remote).</p>
+  </div>
+</div>
+
+<p>What changed: We removed gendered coded language ("aggressive," "rockstar"), cut unnecessary requirements (four HRIS platforms, lifting, driving), separated must-haves from nice-to-haves, added salary transparency, and described the actual work environment honestly.</p>
+
+<h3>Example 2: People Analytics Manager</h3>
+
+<div class="before-after">
+  <div class="before">
+    <span class="label">Before</span>
+    <p><strong>People Analytics Manager</strong></p>
+    <p>Seeking a data-driven ninja to own our people analytics function. Must be a Type-A personality who can manage multiple competing priorities while maintaining a 24/7 on-call availability for executive requests.</p>
+    <p>Requirements: Master's degree in I/O Psychology, Statistics, or related field. 7+ years analytics experience. Expert in Python, R, SQL, Tableau, Power BI, and Looker. Must have managed a team of 5+.</p>
+  </div>
+  <div class="after">
+    <span class="label">After</span>
+    <p><strong>People Analytics Manager</strong></p>
+    <p>We're building our first dedicated people analytics role, and we're looking for someone who can turn workforce data into stories that help leaders make better decisions about hiring, retention, and development.</p>
+    <p>What you'll do: Build dashboards and reports that answer real business questions. Partner with HRBPs to identify trends in turnover, engagement, and performance data. Present findings to senior leadership in plain language.</p>
+    <p>What you need: 4+ years working with people/HR data. Proficiency in SQL and at least one visualization tool (Tableau, Looker, or Power BI). The ability to explain complex findings to a non-technical audience.</p>
+    <p>Salary: $110,000-$135,000 + equity. This role reports to the VP of People and has a path to building a team.</p>
+  </div>
+</div>
+
+<p>What changed: Removed "ninja" and "Type-A" language, eliminated the unreasonable 24/7 expectation, reduced inflated requirements (you don't need a Master's and expertise in six tools), added context about the role's impact and growth path, and included compensation.</p>
+
+<h3>Example 3: Recruiter Role</h3>
+
+<div class="before-after">
+  <div class="before">
+    <span class="label">Before</span>
+    <p><strong>Talent Acquisition Specialist</strong></p>
+    <p>Are you a hunter? We need someone who won't take no for an answer and can crush their numbers every quarter. This role is for closers only.</p>
+    <p>Requirements: 5+ years full-cycle recruiting. Must have recruited for engineering, product, design, marketing, and sales roles. Experience with Greenhouse, Lever, and Ashby. Based in SF. No remote.</p>
+  </div>
+  <div class="after">
+    <span class="label">After</span>
+    <p><strong>Recruiter</strong></p>
+    <p>We're hiring a recruiter who cares as much about candidate experience as they do about filling roles. You'll own full-cycle recruiting across two to three departments and have real influence over how we grow this team.</p>
+    <p>What you need: 3+ years of full-cycle recruiting experience. Experience with an ATS (we use Greenhouse). Strong written communication, because how you write outreach messages matters.</p>
+    <p>What you'll love: A hiring manager who actually shows up to debriefs. A structured interview process you can help improve. And a company where recruiters are seen as strategic partners, not ticket-takers.</p>
+    <p>Salary: $95,000-$115,000 + quarterly bonus. Hybrid in San Francisco (Tues/Wed/Thurs in-office).</p>
+  </div>
+</div>
+
+<p>What changed: Replaced aggressive sales language ("hunter," "closers only," "crush") with language that describes the actual work. Narrowed the unrealistic scope (recruiting across five departments). Added what the candidate gets from the role, not just what they give.</p>
+
+<h2>A Quick Bias Check You Can Run Right Now</h2>
+
+<p>Don't have time for a full rewrite? Here's a five-minute check you can run on any JD using Claude or another AI tool:</p>
+
+<pre><code>Review this job description and answer these five questions:
+
+1. Count the requirements. How many are truly necessary vs. "nice to have"?
+2. List any words that research shows skew masculine or feminine.
+3. Are there physical requirements? If so, are they essential to the role?
+4. Would a career-changer understand this posting, or does it assume
+   insider knowledge?
+5. Does the posting tell candidates what they GET, or only what they
+   must GIVE?
+
+Be specific and direct. I want honest feedback.
+
+[paste JD]</code></pre>
+
+<p>I've run this on hundreds of JDs at this point, and it catches something meaningful every single time. The most common issue? Too many requirements listed as mandatory when they should be optional or removed entirely.</p>
+
+<h2>Three Rules for Better JDs Going Forward</h2>
+
+<p>Whether you use AI or not, these three rules will improve every job description you write:</p>
+
+<ol>
+  <li><strong>Cap your "must have" list at five items.</strong> If you can't narrow it down to five, you don't know what the job actually requires. Everything else goes in "nice to have" or gets deleted.</li>
+  <li><strong>Include salary.</strong> Candidates are not going to spend time applying to your role when 73% of postings on competitor sites include pay ranges. Transparency is now table stakes, and in many states, it's the law.</li>
+  <li><strong>Answer the question: "Why would someone want this job?"</strong> Not "why is our company great," but what makes this specific role worth someone's time and career investment. If you can't answer that, the role might need redesigning, not just a better description.</li>
+</ol>
+
+<div class="callout">
+  <p><strong>Try this today:</strong> Pick one open JD at your company. Run it through the bias-check prompt above. Share the results with the hiring manager. You'll be surprised how quickly the conversation shifts from "we need a unicorn" to "okay, what do we actually need?"</p>
+</div>
+
+<p>The best part of using AI for this work is speed. You can audit ten JDs in the time it used to take to review one. And every JD you improve isn't just better marketing; it's a more equitable front door to your company.</p>
+
+<a href="../index.html#articles" class="back-link">&larr; Back to all articles</a>
+
+</article>
+
+<footer>
+  <ul class="footer-links">
+    <li><a href="../index.html#articles">Articles</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#subscribe">Subscribe</a></li>
+    <li><a href="https://www.linkedin.com/in/denmath">LinkedIn</a></li>
+  </ul>
+  <p class="footer-copy">&copy; 2026 AI for HR &middot; Built with &hearts; in San Francisco</p>
+</footer>
+
+</body>
+</html>
